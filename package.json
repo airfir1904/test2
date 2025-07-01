@@ -1,0 +1,17 @@
+{
+  "name": "projekt",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u00002\u00000\u00001\u00000\u00002\u00000\u00002\u00000\u0000\r\u0000 \u0000#\u0000 \u00002\u00000\u00001\u00000\u00002\u00000\u00002\u00000\u0000\r\u0000 \u0000",
+  "main": "script.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "express": "^4.21.2",
+    "multer": "^2.0.1"
+  }
+}

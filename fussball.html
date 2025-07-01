@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fußball Wissen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            background-image: url('https://png.pngtree.com/background/20231030/original/pngtree-nighttime-view-of-a-3d-rendered-football-stadium-picture-image_5810358.jpg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+            transition: all 0.5s ease;
+        }
+        
+        .sidebar {
+            width: 300px;
+            background-color: #111;
+            padding: 30px 20px;
+            border-right: 1px solid #333;
+            transition: all 0.5s ease;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+        
+        .nav-item {
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            background-color: #222;
+            color: #fff;
+            border-left: 4px solid #002aff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .nav-item:hover {
+            background-color: #333;
+            transform: translateX(5px);
+        }
+        
+        .tactical-diagram {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 5px;
+        }
+        
+        .pitch {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background-color: #0a3d0a;
+            border: 2px solid #002aff;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .player {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #002aff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+            border: 2px solid #000;
+            z-index: 2;
+        }
+        
+        .player.gk {
+            background-color: #0d00ff;
+        }
+        
+        .player.df {
+            background-color: #e5ff00;
+        }
+        
+        .player.mf {
+            background-color: #00f7ff;
+        }
+        
+        .player.fw {
+            background-color: #ff0000;
+        }
+        
+        .lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #0004f7;
+        }
+        
+        .center-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+        }
+        
+        .center-spot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: #000000;
+            border-radius: 50%;
+        }
+        
+        .penalty-area {
+            position: absolute;
+            width: 80%;
+            height: 30%;
+            top: 0;
+            left: 10%;
+            border: 2px solid #ffffff;
+            border-bottom: none;
+        }
+        
+        .penalty-spot {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: #ffffff;
+            border-radius: 50%;
+        }
+        
+        .goal-area {
+            position: absolute;
+            width: 50%;
+            height: 15%;
+            top: 0;
+            left: 25%;
+            border: 2px solid #ffffff;
+            border-bottom: none;
+        }
+        
+        .content-panel {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            padding: 30px;
+            overflow-y: auto;
+            transition: all 0.5s ease;
+            opacity: 0;
+            z-index: 10;
+        }
+        
+        .content-panel.show {
+            left: 0;
+            opacity: 1;
+        }
+        
+        .content-panel h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #ff0000;
+            padding-bottom: 10px;
+        }
+        
+        .content-panel p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .content-panel ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .content-panel li {
+            margin-bottom: 10px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .formation-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #333;
+            }
+            
+            .pitch {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="nav-item" data-panel="geschichte">Geschichte des Fußballs (Lịch sử bóng đá )</div>
+            <div class="nav-item" data-panel="turniere">Wichtige Turniere ( 1 số giải đấu quang trọng )</div>
+            <div class="nav-item" data-panel="regeln">Spielregeln ( Luật chơi ) </div>
+            <div class="nav-item" data-panel="taktik">Spielaufstellungen ( 1 số đội hình thi đấu )</div>
+            <div class="nav-item" data-panel="vokabeln">Fußball Vokabeln ( Từ Vựng Bóng Đá ) </div>
+            <div class="nav-item" data-panel="begriff">Einige Fußballbegriffe ( 1 Số Thuật Ngữ Bóng Đá )</div>
+
+        </div>
+        
+        <div class="main-content">
+            <div class="formation-title">4-3-3 Defensive Formation  / Sơ đồ 4-3-3 Phòng ngự </div>
+            <div class="tactical-diagram">
+                <div class="pitch">
+                    <div class="lines"></div>
+                    <div class="center-circle"></div>
+                    <div class="center-spot"></div>
+                    <div class="penalty-area"></div>
+                    <div class="penalty-spot"></div>
+                    <div class="goal-area"></div>
+                    
+                    <!-- Torwart -->
+                    <div class="player gk" style="bottom: 40px; left: 50%; transform: translateX(-50%);">TW</div>
+                    
+                    <!-- Verteidiger -->
+                    <div class="player df" style="bottom: 120px; left: 10%;">LV</div>
+                    <div class="player df" style="bottom: 120px; left: 31%;">IV</div>
+                    <div class="player df" style="bottom: 120px; left: 62%;">IV</div>
+                    <div class="player df" style="bottom: 120px; left: 85%;">RV</div>
+                    
+                    <!-- Mittelfeld -->
+                    <div class="player mf" style="bottom: 240px; left: 21% ">ZM</div>
+                    <div class="player mf" style="bottom: 200px; left: 50%; transform: translateX(-50%);">ZDM</div>
+                    <div class="player mf" style="bottom: 240px; left: 73%;">ZM</div>
+                    
+                    <!-- Stürmer -->
+                    <div class="player fw" style="bottom: 380px; left: 10%;">LF</div>
+                    <div class="player fw" style="bottom: 400px; left: 50%; transform: translateX(-50%);">ST</div>
+                    <div class="player fw" style="bottom: 380px; left: 85%;">RF</div>
+                </div>
+            </div>
+            
+            <!-- Content Panels -->
+            <div class="content-panel" id="geschichte">
+                <span class="close-btn">&times;</span>
+                <h2>Geschichte des Fußballs</h2>
+                <p>Der moderne Fußball, wie wir ihn heute kennen, hat seinen Ursprung in England im 19. Jahrhundert. Die ersten offiziellen Regeln wurden 1863 von der Football Association (FA) festgelegt.</p>
+                <p>Wichtige Meilensteine:</p>
+                <ul>
+                    <li>1863: Gründung der Football Association in England</li>
+                    <li>1904: Gründung der FIFA in Paris</li>
+                    <li>1930: Erste Fußball-Weltmeisterschaft in Uruguay</li>
+                    <li>1954: Gründung der UEFA</li>
+                    <li>1992: Gründung der englischen Premier League</li>
+                </ul>
+                <p>In Deutschland wurde der Fußball durch Konrad Koch in den 1870er Jahren eingeführt. Der Deutsche Fußball-Bund (DFB) wurde 1900 gegründet.</p>
+            </div>
+            
+            <div class="content-panel" id="turniere">
+                <span class="close-btn">&times;</span>
+                <h2>Wichtige Fußball-Turniere</h2>
+                <p>Internationale Turniere:</p>
+                <ul>
+                    <li>FIFA Weltmeisterschaft (alle 4 Jahre)</li>
+                    <li>UEFA Europameisterschaft</li>
+                    <li>Copa América (Südamerika)</li>
+                    <li>Afrika-Cup</li>
+                    <li>CONCACAF Gold Cup (Nord- und Mittelamerika)</li>
+                    <li>Olympisches Fußballturnier</li>
+                </ul>
+                
+                <p>Klubwettbewerbe:</p>
+                <ul>
+                    <li>UEFA Champions League</li>
+                    <li>UEFA Europa League</li>
+                    <li>UEFA Europa Conference League</li>
+                    <li>FIFA Klub-Weltmeisterschaft</li>
+                </ul>
+                
+                <p>Nationale Ligen:</p>
+                <ul>
+                    <li>Bundesliga (Deutschland)</li>
+                    <li>Premier League (England)</li>
+                    <li>La Liga (Spanien)</li>
+                    <li>Serie A (Italien)</li>
+                    <li>Ligue 1 (Frankreich)</li>
+                </ul>
+            </div>
+            
+            <div class="content-panel" id="regeln">
+                <span class="close-btn">&times;</span>
+                <h2>Grundlegende Spielregeln</h2>
+                <p>Ein Fußballspiel wird von zwei Mannschaften mit je elf Spielern ausgetragen. Das Spiel dauert in der Regel 90 Minuten (2 × 45 Minuten).</p>
+                
+                <p>Wichtige Regeln:</p>
+                <ul>
+                    <li>Der Ball ist im Aus, wenn er vollständig die Seiten- oder Torlinie überschritten hat</li>
+                    <li>Abseits: Ein Spieler steht im Abseits, wenn er bei Ballabgabe näher zur gegnerischen Torlinie steht als der Ball und der vorletzte Gegenspieler</li>
+                    <li>Freistoß: Wird nach bestimmten Fouls verhängt, kann direkt (auf Tor) oder indirekt (Ball muss zuerst einen anderen Spieler berühren) ausgeführt werden</li>
+                    <li>Elfmeter: Wird bei Fouls im Strafraum verhängt</li>
+                    <li>Gelbe Karte: Verwarnung</li>
+                    <li>Rote Karte: Platzverweis</li>
+                </ul>
+                
+                <p>Das Spiel wird von einem Schiedsrichter geleitet, der von zwei Linienrichtern unterstützt wird (bei höheren Ligen auch mit VAR - Video Assistant Referee).</p>
+            </div>
+            
+            <div class="content-panel" id="taktik">
+                <span class="close-btn">&times;</span>
+                <h2>4-3-3 Defensive Taktik</h2>
+                <p>Die 4-3-3 Defensive Formation ist eine Variante des klassischen 4-3-3 Systems mit Fokus auf defensiver Stabilität.</p>
+                
+                <p>Positionen und Aufgaben:</p>
+                <ul>
+                    <li><strong>Torwart (TW):</strong> Letzter Mann, Organisiert die Abwehr</li>
+                    <li><strong>Viererabwehrkette:</strong>
+                        <ul>
+                            <li>Linksaußen (LV): Defensive Priorität, unterstützt im Aufbau</li>
+                            <li>Innenverteidiger (IV1 & IV2): Zentrale Abwehr, gute Kopfballeigenschaften</li>
+                            <li>Rechtsaußen (RV): Defensive Priorität, weniger Offensivläufe</li>
+                        </ul>
+                    </li>
+                    <li><strong>Mittelfelddrei:</strong>
+                        <ul>
+                            <li>Defensiver Mittelfeldspieler (ZDM): Zerstörer, baut Spiel auf</li>
+                            <li>Zentraler Mittelfeldspieler (ZM): Verbindungspiel zwischen Abwehr und Angriff</li>
+                        </ul>
+                    </li>
+                    <li><strong>Sturm:</strong>
+                        <ul>
+                            <li>Linksstürmer (LF): Kommt nach innen, unterstützt defensiv</li>
+                            <li>Stürmer (ST): Halten des Balls, Anspielstation</li>
+                            <li>Rechtsstürmer (RF): Kommt nach innen, unterstützt defensiv</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <p>Vorteile dieser Formation:</p>
+                <ul>
+                    <li>Defensive Stabilität durch zahlenmäßige Überlegenheit hinten</li>
+                    <li>Gute Kontrolle des Zentrums</li>
+                    <li>Flexibilität im Umschalten</li>
+                    <li>Kompakte Abstände zwischen den Linien</li>
+                </ul>
+                
+                <p>Nachteile:</p>
+                <ul>
+                    <li>Begrenzte offensive Möglichkeiten</li>
+                    <li>Hohe athletische Anforderungen an die Außenverteidiger</li>
+                    <li>Abhängigkeit von einem starken defensiven Mittelfeldspieler</li>
+                </ul>
+
+             <h2>4-3-3  Offensive  Taktik</h2>
+             <p>Die 4-3-3 Offensive Formation ist eine Variante des klassischen 4-3-3-Systems mit Fokus auf Angriffsspiel, Ballbesitz und Pressing. Sie wird häufig von Mannschaften verwendet, die dominieren und früh Druck ausüben wollen.</p>
+
+
+            </div>
+            
+            <div class="content-panel" id="vokabeln">
+                <span class="close-btn">&times;</span>
+                <h2>Fußball-Vokabeln</h2>
+                <p>Allgemeine Begriffe:</p>
+                <ul>
+                    <li>Fußballspiel/Fußballmatch - das Fußballspiel</li>
+                    <li>Mannschaft : Đội Bóng </li>
+                    <li>Spieler : Cầu Thủ </li>
+                    <li>Schiedsrichter : Trọng Tài </li>
+                    <li>Tor : Bàn Thắng </li>
+                    <li>Foul - foul</li>
+                    <li>Elfmeter : 11 mét </li>
+                    <li>Abseits : Việt Vị </li>
+                </ul>
+                
+                <p>Positionen:</p>
+                <ul>
+                    <li>Torwart : Thủ Môn </li>
+                    <li>Abwehrspieler/Verteidiger : Hậu Vệ </li>
+                    <li>Mittelfeldspieler : Tiền Vệ </li>
+                    <li>Stürmer : Tiền Đạo</li>
+                    <li>Mittelstürmer : Tiền Đạo Trung Tâm </li>
+                    <li>Innenverteidiger : Hậu Vệ Trung Tâm </li>
+                    <li>Außenverteidiger : Hậu Vệ Biên</li>
+                    <li>Linksverteidiger : Hậu Vệ Cánh Trái </li>
+                    <li>Rechtsverteidiger : Hậu Vệ Cánh Phải </li>
+                    <li>Flügelspieler : Tiền Đạo Cánh </li>
+                </ul>
+                
+                <p>Aktionen:</p>
+                <ul>
+                    <li>schießen - to shoot</li>
+                    <li>passen - to pass</li>
+                    <li>laufen - to run</li>
+                    <li>dribbeln - to dribble</li>
+                    <li>tackeln - to tackle</li>
+                    <li>köpfen - to head</li>
+                    <li>einwerfen - to throw in</li>
+                </ul>
+                
+                <p>Wichtige englische/fremdsprachige Begriffe (oft im deutschen Fußball verwendet):</p>
+                <ul>
+                    <li>Derby - Lokalderby</li>
+                    <li>comeback - Rückkehr/Wende</li>
+                    <li>Alleskönner - allrounder</li>
+                    <li>Assist - Torvorlage</li>
+                    <li>Chip - Lupfer</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            const contentPanels = document.querySelectorAll('.content-panel');
+            const sidebar = document.querySelector('.sidebar');
+            const mainContent = document.querySelector('.main-content');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const panelId = this.getAttribute('data-panel');
+                    
+                    // Hide all panels first
+                    contentPanels.forEach(panel => {
+                        panel.classList.remove('show');
+                    });
+                    
+                    // Show selected panel
+                    document.getElementById(panelId).classList.add('show');
+                    
+                    // Slide sidebar and content
+                    sidebar.style.transform = 'translateX(-100%)';
+                    mainContent.style.transform = 'translateX(-300px)';
+                    
+                    // Hide other panels completely after animation
+                    setTimeout(() => {
+                        contentPanels.forEach(panel => {
+                            if(panel.id !== panelId) {
+                                panel.style.display = 'none';
+                            }
+                        });
+                    }, 500);
+                });
+            });
+            
+            // Close buttons
+            const closeBtns = document.querySelectorAll('.close-btn');
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const panel = this.parentElement;
+                    panel.classList.remove('show');
+                    
+                    // Show sidebar and main content again
+                    setTimeout(() => {
+                        sidebar.style.transform = 'translateX(0)';
+                        mainContent.style.transform = 'translateX(0)';
+                        
+                        // Show all panels again (hidden ones)
+                        contentPanels.forEach(panel => {
+                            panel.style.display = 'block';
+                        });
+                    }, 300);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

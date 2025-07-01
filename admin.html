@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quản lý Giao Dịch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-8 bg-gray-50">
+
+  <div style="position: absolute; top: 20px; left: 20px; z-index: 1000;">
+  <a href="index.html" style="padding: 10px 20px; background-color: white; color: black; text-decoration: none; border: 2px solid; border-radius: 8px; font-weight: bold;">
+    Home
+  </a>
+</div> 
+
+  <h1 class="text-3xl font-bold mb-6">Danh sách giao dịch cần duyệt</h1>
+
+  <!-- Form đăng nhập -->
+  <div id="loginSection" class="max-w-sm mb-8">
+    <label class="block mb-2 text-sm font-medium text-gray-700">Mật khẩu admin</label>
+    <input id="adminPass" type="password" class="w-full border p-2 rounded mb-4" placeholder="Nhập mật khẩu">
+    <button id="loginBtn" class="px-4 py-2 bg-indigo-600 text-white rounded">Đăng nhập</button>
+  </div>
+
+  <!-- Bảng quản lý -->
+  <div id="adminPanel" class="hidden">
+    <button id="backBtn" class="mb-4 px-4 py-2 bg-gray-500 text-white rounded">Quay lại</button>
+    
+    <!-- Mục lọc theo ngày tạo -->
+    <div class="mb-4">
+      <label class="block mb-2 text-sm font-medium text-gray-700">Lọc theo ngày giao dịch:</label>
+      <select id="dateFilter" class="w-full border p-2 rounded">
+        <option value="newest">Mới đây</option>
+        <option value="recent">Gần nhất</option>
+        <option value="oldest">Lâu nhất</option>
+      </select>
+    </div>
+
+    <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+      <thead>
+        <tr class="bg-gray-200 text-gray-700 uppercase text-sm">
+          <th class="py-3 px-4 text-left">Họ Và Tên</th>
+          <th class="py-3 px-4 text-left">Số điện thoại</th>
+          <th class="py-3 px-4 text-left">Địa chỉ E-Mail</th>
+          <th class="py-3 px-4 text-left">Số tiền</th>
+          <th class="py-3 px-4 text-left">Mã Giao dịch</th>
+          <th class="py-3 px-4 text-left">Ảnh biên lai</th>
+          <th class="py-3 px-4 text-left">Ngày giao dịch </th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const loginBtn = document.getElementById('loginBtn');
+    const backBtn = document.getElementById('backBtn');
+
+    loginBtn.addEventListener('click', () => {
+      const pass = document.getElementById('adminPass').value;
+      if (pass === '123456') {
+        document.getElementById('loginSection').classList.add('hidden');
+        document.getElementById('adminPanel').classList.remove('hidden');
+        loadData();
+      } else {
+        alert('Sai mật khẩu!');
+      }
+    });
+
+    backBtn.addEventListener('click', () => {
+      document.getElementById('adminPanel').classList.add('hidden');
+      document.getElementById('loginSection').classList.remove('hidden');
+    });
+
+    function loadData() {
+      fetch('db.json')
+        .then(res => res.json())
+        .then(data => {
+          const tbody = document.getElementById('tableBody');
+          tbody.innerHTML = '';
+          data.reverse().forEach(item => {
+            // Thêm trường fullname nếu không có
+            if (!item.fullname) {
+              item.fullname = item.id; // Hoặc một giá trị mặc định nào đó
+            }
+            
+            const tr = document.createElement('tr');
+            tr.className = 'border-b';
+            tr.innerHTML = `
+              <td class="py-3 px-4">${item.fullname || ''}</td>
+              <td class="py-3 px-4">${item.phone || ''}</td>
+              <td class="py-3 px-4">${item.email || ''}</td>
+              <td class="py-3 px-4">${item.amount || ''}</td>
+              <td class="py-3 px-4">${item.transactionId || ''}</td>
+              <td class="py-3 px-4">
+                <a href="uploads/${item.proofFile}" target="_blank" class="text-blue-600 underline">Xem</a>
+              </td>
+              <td class="py-3 px-4 text-sm text-gray-500">${item.createdAt ? new Date(item.createdAt).toLocaleString() : ''}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+        });
+    }
+  </script>
+
+</body>
+</html>

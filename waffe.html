@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waffenlexikon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #111;
+            color: #e0e0e0;
+        }
+        .sidebar {
+            transition: all 0.3s ease;
+        }
+        .sidebar.collapsed {
+            width: 50px;
+        }
+        .sidebar.collapsed .sidebar-text {
+            display: none;
+        }
+        .weapon-card {
+            transition: transform 0.2s ease;
+        }
+        .weapon-card:hover {
+            transform: translateY(-5px);
+        }
+        .blood-red {
+            background-color: #8B0000;
+        }
+        .dark-red {
+            background-color: #5C0000;
+        }
+        .category-content {
+            max-height: 500px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .category-content.collapsed {
+            max-height: 0;
+        }
+        .toggle-category .collapsed-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar h-full bg-black w-64 flex flex-col border-r border-red-900">
+        <div class="p-4 blood-red flex justify-center sm:justify-between items-center">
+            <h1 class="text-xl font-bold text-white sidebar-text">Waffenlexikon</h1>
+            <button id="toggleSidebar" class="text-white focus:outline-none whitespace-nowrap">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        
+        <div class="overflow-y-auto flex-1">
+            <!-- Sturmgewehre -->
+            <div class="border-b border-red-900">
+                <button class="toggle-category w-full p-3 dark-red text-left text-white flex items-center justify-between focus:outline-none">
+                    <span class="sidebar-text">Sturmgewehre</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sidebar-text transform transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div class="category-content bg-black">
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="ak47">AK-47</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="m4a1">M4A1</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="aug">AUG</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="famas">FAMAS</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="galil">Galil</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="hk416">HK416</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="scar">SCAR-L</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="g36">G36</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="l85">L85A2</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="tar21">TAR-21</a>
+                </div>
+            </div>
+            
+            <!-- Präzisionsgewehre -->
+            <div class="border-b border-red-900">
+                <button class="toggle-category w-full p-3 dark-red text-left text-white flex items-center justify-between focus:outline-none">
+                    <span class="sidebar-text">Präzisionsgewehre</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sidebar-text transform transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div class="category-content bg-black">
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="awp">AWP</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="barrett">Barrett M82</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="dragunov">Dragunov SVD</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="m24">M24</a>
+                </div>
+            </div>
+            
+            <!-- Nahkampfwaffen -->
+            <div class="border-b border-red-900">
+                <button class="toggle-category w-full p-3 dark-red text-left text-white flex items-center justify-between focus:outline-none">
+                    <span class="sidebar-text">Nahkampfwaffen</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sidebar-text transform transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div class="bg-black">
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="mp5">MP5</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="ump">UMP-45</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="p90">P90</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="vector">Vector</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="mp7">MP7</a>
+                    <a href="#" class="block p-3 pl-6 text-gray-300 hover:bg-gray-800 weapon-link" data-weapon="pp19">PP-19 Bizon</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="flex-1 overflow-y-auto p-8">
+        <div id="weapon-display" class="max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-bold text-red-600 mb-2">Willkommen im Waffenlexikon</h1>
+                <p class="text-gray-400">Wählen Sie eine Waffe aus der Seitenleiste aus, um Details anzuzeigen</p>
+            </div>
+            
+            <div id="weapon-content" class="hidden">
+                <div class="flex flex-col md:flex-row gap-8 mb-8">
+                    <div class="md:w-1/2">
+                        <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg weapon-card">
+                            <img id="weapon-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9a2aea88-1d26-4ec7-ae97-155a0680d73a.png" alt="Generisches Waffenbild" class="w-full h-auto" />
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h2 id="weapon-name" class="text-3xl font-bold text-red-500 mb-4"></h2>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <h3 class="text-red-400 font-semibold mb-2">Kaliber</h3>
+                                <p id="weapon-caliber" class="text-gray-300"></p>
+                            </div>
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <h3 class="text-red-400 font-semibold mb-2">Magazingröße</h3>
+                                <p id="weapon-magazine" class="text-gray-300"></p>
+                            </div>
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <h3 class="text-red-400 font-semibold mb-2">Feuerrate</h3>
+                                <p id="weapon-rate" class="text-gray-300"></p>
+                            </div>
+                            <div class="bg-gray-800 p-4 rounded-lg">
+                                <h3 class="text-red-400 font-semibold mb-2">Gewicht</h3>
+                                <p id="weapon-weight" class="text-gray-300"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 rounded-lg p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold text-red-500 mb-4">Technische Details</h3>
+                    <p id="weapon-description" class="text-gray-300 mb-6"></p>
+                    
+                    <h3 class="text-xl font-semibold text-red-500 mb-4">Geschichte</h3>
+                    <p id="weapon-history" class="text-gray-300"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize all categories as expanded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Only expand if sidebar isn't collapsed
+            if (!document.getElementById('sidebar').classList.contains('collapsed')) {
+                document.querySelectorAll('.category-content').forEach(content => {
+                    content.classList.remove('collapsed');
+                });
+            }
+        });
+        // Sidebar toggle
+        document.getElementById('toggleSidebar').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+            
+            // Toggle all categories when sidebar is collapsed
+            const collapsible = sidebar.classList.contains('collapsed');
+            document.querySelectorAll('.category-content').forEach(content => {
+                content.classList.toggle('collapsed', collapsible);
+            });
+            document.querySelectorAll('.toggle-category svg').forEach(icon => {
+                icon.classList.toggle('rotate-180', collapsible);
+            });
+        });
+
+        // Category toggles
+        document.querySelectorAll('.toggle-category').forEach(button => {
+            button.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('svg');
+                content.classList.toggle('collapsed');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Weapon data
+        const weapons = {
+            ak47: {
+                name: "AK-47",
+                image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1bc0fa01-e369-4ba8-b609-f64da3bd495e.png",
+                caliber: "7.62×39mm",
+                magazine: "30 Schuss",
+                rate: "600 Schuss/min",
+                weight: "4,3 kg",
+                description: "Das AK-47, entwickelt von Michail Kalaschnikow, ist eines der bekanntesten Sturmgewehre der Welt. Bekannt für seine Zuverlässigkeit unter schwierigen Bedingungen und einfache Wartung.",
+                history: "Eingeführt 1949 in der Sowjetunion, wurde das AK-47 in über 100 Ländern eingesetzt und ist das am weitesten verbreitete Sturmgewehr der Welt mit schätzungsweise über 100 Millionen produzierten Einheiten."
+            },
+            m4a1: {
+                name: "M4A1",
+                image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/295c790d-ac42-447f-91b4-a57ecdf1b66d.png",
+                caliber: "5.56×45mm NATO",
+                magazine: "30 Schuss",
+                rate: "700-950 Schuss/min",
+                weight: "2,88 kg",
+                description: "Das M4A1 ist eine Variante des M4-Karabiners mit vollautomatischem Feuer und wird von den US-Streitkräften und vielen anderen Nationen eingesetzt.",
+                history: "Entwickelt in den 1990er Jahren als Weiterentwicklung des M16-Gewehrs. Wird seit 1994 von den US-Streitkräften verwendet."
+            },
+            awp: {
+                name: "AWP",
+                image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fddb9c84-df47-496b-b6eb-ae7b82e84cad.png",
+                caliber: ".338 Lapua Magnum",
+                magazine: "5 Schuss",
+                rate: "Manuell",
+                weight: "6,5 kg",
+                description: "Das Accuracy International Arctic Warfare Precision ist ein hochpräzises Scharfschützengewehr britischer Herkunft.",
+                history: "Entwickelt in den 1980er Jahren für militärische und polizeiliche Einsätze. Bekannt für seine extreme Präzision auch unter schwierigen Bedingungen."
+            },
+            mp5: {
+                name: "MP5",
+                image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0824926a-22e2-48e7-83a6-6356dd581d74.png",
+                caliber: "9×19mm Parabellum",
+                magazine: "30 Schuss",
+                rate: "800 Schuss/min",
+                weight: "2,54 kg",
+                description: "Die MP5 ist ein Maschinenpistolen-System von Heckler & Koch, bekannt für ihre Präzision und Zuverlässigkeit.",
+                history: "Eingeführt 1966, wird die MP5 von Spezialeinheiten weltweit eingesetzt und ist eine der erfolgreichsten Maschinenpistolen aller Zeiten."
+            },
+            // Additional weapons data would follow the same pattern
+            aug: {
+                name: "AUG",
+                image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/58e72f83-68e9-4308-b17d-b6c4b2b05b36.png",
+                caliber: "5.56×45mm NATO",
+                magazine: "30 Schuss",
+                rate: "680-750 Schuss/min",
+                weight: "3,6 kg",
+                description: "Das Steyr AUG ist ein bullpup-Sturmgewehr österreichischer Herkunft mit innovativem Design.",
+                history: "Eingeführt 1977, war es eines der ersten bullpup-Gewehre, das in großen Stückzahlen produziert wurde."
+            },
+            famas: {
+                name: "FAMAS",
+                image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/84095dbb-05dc-4885-be27-0afc7fd9fb03.png",
+                caliber: "5.56×45mm NATO",
+                magazine: "25 Schuss",
+                rate: "900-1100 Schuss/min",
+                weight: "3,61 kg",
+                description: "Das FAMAS ist das Standard-Sturmgewehr der französischen Armee mit bullpup-Konfiguration.",
+                history: "Eingeführt 1978, war es das Hauptgewehr der französischen Streitkräfte bis zur Einführung des HK416."
+            },
+            barrett: {
+                name: "Barrett M82",
+                image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f6f7a7da-77c4-47c7-8217-c8ab491f1a8a.png",
+                caliber: ".50 BMG",
+                magazine: "10 Schuss",
+                rate: "Semi-automatisch",
+                weight: "14 kg",
+                description: "Das Barrett M82 ist ein schweres Scharfschützengewehr, das für seine Durchschlagskraft gegen leichte Fahrzeuge und Materialziele bekannt ist.",
+                history: "Entwickelt in den 1980er Jahren von Ronnie Barrett. Wird von vielen Streitkräften als Anti-Material-Gewehr eingesetzt."
+            },
+            vector: {
+                name: "KRISS Vector",
+                image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ed3c43e4-5eaf-4382-a1e4-77536a45b72d.png",
+                caliber: ".45 ACP",
+                magazine: "25 Schuss",
+                rate: "1200 Schuss/min",
+                weight: "2,7 kg",
+                description: "Die KRISS Vector ist eine Maschinenpistole mit einzigartigem Rückstoßminderungssystem.",
+                history: "Entwickelt in den 2000er Jahren, verwendet sie ein innovatives System zur Reduzierung des Rückstoßes bei hoher Feuerrate."
+            }
+            // Additional weapons would be added here following the same pattern
+        };
+
+        // Handle weapon selection
+        document.querySelectorAll('.weapon-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const weaponId = this.getAttribute('data-weapon');
+                displayWeapon(weaponId);
+            });
+        });
+
+        function displayWeapon(weaponId) {
+            const weapon = weapons[weaponId];
+            if (!weapon) return;
+
+            document.getElementById('weapon-content').classList.remove('hidden');
+            document.getElementById('weapon-name').textContent = weapon.name;
+            document.getElementById('weapon-image').src = weapon.image;
+            document.getElementById('weapon-image').alt = weapon.name;
+            document.getElementById('weapon-caliber').textContent = weapon.caliber;
+            document.getElementById('weapon-magazine').textContent = weapon.magazine;
+            document.getElementById('weapon-rate').textContent = weapon.rate;
+            document.getElementById('weapon-weight').textContent = weapon.weight;
+            document.getElementById('weapon-description').textContent = weapon.description;
+            document.getElementById('weapon-history').textContent = weapon.history;
+        }
+    </script>
+</body>
+</html>
+

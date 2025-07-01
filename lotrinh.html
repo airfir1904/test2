@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lộ Trình Học Tập</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            background-image: url('https://www.creativefabrica.com/wp-content/uploads/2021/12/10/white-luxury-podium-stage-background-Graphics-21533563-1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: all 0.3s ease;
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        
+       .card h3 {
+         word-wrap: break-word;
+         word-break: break-word;
+         white-space: normal;
+         min-height: 3rem; /* hoặc dùng fixed height nếu muốn */
+  }
+
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .fade-out {
+            animation: fadeOut 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateX(0); }
+            to { opacity: 0; transform: translateX(20px); }
+        }
+
+       
+
+        .glowing-border {
+            border: 2px solid #FFD700;
+            animation: gold-glow 2s infinite;
+        }
+
+        .hidden {
+            display: none;
+        }
+        
+        .content-card {
+            background: rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .subcategory-title {
+            color: #ff0000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <a href="index.html" style="display: inline-block; padding: 10px 20px; background-color: white; color: black; text-decoration: none; border: 2px solid #FFD700; border-radius: 8px; font-weight: bold;">Home</a>
+
+    <div class="max-w-7xl mx-auto">
+        <!-- Main Title -->
+        <h1 class="text-4xl font-bold text-center mb-16 text-black drop-shadow-lg">Schritt</h1>
+
+        <!-- Main Categories Container -->
+        <div id="mainCategories" class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div class="card glowing-border bg-white rounded-lg p-6 text-center cursor-pointer" onclick="showSubCategories('A1')">
+                <h2 class="text-2xl font-semibold mb-2 text-black">A1</h2>
+                <p class="text-gray-600">Cơ bản/Anfänger</p>
+            </div>
+            <div class="card glowing-border bg-white rounded-lg p-6 text-center cursor-pointer" onclick="showSubCategories('A2')">
+                <h2 class="text-2xl font-semibold mb-2 text-black">A2</h2>
+                <p class="text-gray-600">Sơ cấp/Grundlegende Kenntnisse</p>
+            </div>
+            <div class="card glowing-border bg-white rounded-lg p-6 text-center cursor-pointer" onclick="showSubCategories('B1')">
+                <h2 class="text-2xl font-semibold mb-2 text-black">B1</h2>
+                <p class="text-gray-600">Trung cấp/Selbstständige Sprachverwendung 1</p>
+            </div>
+            <div class="card glowing-border bg-white rounded-lg p-6 text-center cursor-pointer" onclick="showSubCategories('B2')">
+                <h2 class="text-2xl font-semibold mb-2 text-black">B2</h2>
+                <p class="text-gray-600">Trung cao cấp/Selbstständige Sprachverwendung 2</p>
+            </div>
+            <div class="card glowing-border bg-white rounded-lg p-6 text-center cursor-pointer" onclick="showSubCategories('C1')">
+                <h2 class="text-2xl font-semibold mb-2 text-black">C1</h2>
+                <p class="text-gray-600">Cao cấp/Fortgeschrittene Sprachverwendung</p>
+            </div>
+            <div class="card glowing-border bg-white rounded-lg p-6 text-center cursor-pointer" onclick="showSubCategories('C2')">
+                <h2 class="text-2xl font-semibold mb-2 text-black">C2</h2>
+                <p class="text-gray-600">Thành thạo/Kompetente Sprachverwendung</p>
+            </div>
+        </div>
+        
+        <!-- Sub Categories Container (Hidden by default) -->
+        <div id="subCategoriesContainer" class="hidden mt-12">
+            <h2 id="currentCategoryTitle" class="text-3xl font-bold text-center mb-8 text-red-600"></h2>
+            <div id="subCategories" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4"></div>
+            <button onclick="backToMainCategories()" class="mt-8 mx-auto block px-6 py-2 bg-white text-black rounded-lg hover:bg-gray-100 transition border-2 border-yellow-500">
+                ← Zurück 
+            </button>
+        </div>
+        
+        <!-- Content Container (Hidden by default) -->
+        <div id="contentContainer" class="hidden mt-12">
+            <div class="content-card p-8">
+                <h2 id="contentTitle" class="text-3xl font-bold mb-6 text-red-600"></h2>
+                <div id="contentBody" class="prose max-w-none text-black">
+                    <!-- Content will be inserted here dynamically -->
+                </div>
+                <button onclick="backToSubCategories()" class="mt-8 px-6 py-2 bg-white text-black rounded-lg hover:bg-gray-100 transition border-2 border-yellow-500">
+                    ← Zurück 
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Define subcategories for each main category
+        const categories = {
+            'A1': [
+                'Aussprache/Phát âm', 'Satzbau/cấu trúc câu', 'Te-Ka-Mo-Lo', 'Pronomen/Đại từ ','Konjugation/Chia Động Từ', 
+                'Zeitform/Các "thì "cơ bản ','Nominativ/Akkusativ/Dativ', 'Personalspronomen/Đại từ nhân xưng', 'Possessivpronomen/Đại từ sở hữu', 
+                'Nomen & Artikel/Danh từ và Mạo từ', 'Modalverben/động từ khuyết thiếu','trennbare Verben/Động từ tách ','regelmäßige Verben/Động từ thường ','unregelmäßige Verben/Động từ bất quy tắc',
+                'Präpositionen/Giới từ','Adjektive & Adverbien/Tính từ và Trạng từ','Zeit Regeln / Cấu trúc thời gian', ' Quy tắc chỉ đường '
+            ],
+            'A2': [
+                'Ngữ pháp nâng cao', 'Từ vựng A2-1', 'Phát âm trung cấp', 'Nghe hiểu A2', 
+                'Đọc hiểu A2', 'Viết trung cấp', 'Giao tiếp xã hội', 'Từ vựng A2-2', 
+                'Ngữ pháp phức tạp', 'Tổng hợp kiến thức A2'
+            ],
+            'B1': [
+                'Ngữ pháp B1', 'Từ vựng chuyên sâu', 'Phát âm nâng cao', 'Nghe hiểu B1', 
+                'Đọc hiểu B1', 'Viết luận', 'Giao tiếp công việc', 'Từ vựng học thuật', 
+                'Ngữ pháp phức tạp', 'Tổng hợp kiến thức B1'
+            ],
+            'B2': [
+                'Ngữ pháp B2', 'Từ vựng chuyên ngành', 'Phát âm thành thạo', 'Nghe hiểu B2', 
+                'Đọc hiểu B2', 'Viết học thuật', 'Thuyết trình', 'Từ vựng nâng cao', 
+                'Ngữ pháp cao cấp', 'Tổng hợp kiến thức B2'
+            ],
+            'C1': [
+                'Ngữ pháp chuyên sâu', 'Từ vựng C1', 'Nghe hiểu nâng cao', 
+                'Đọc hiểu phức tạp', 'Viết chuyên nghiệp'
+            ],
+            'C2': [
+                'Ngữ pháp thành thạo', 'Từ vựng C2', 'Nghe hiểu thành thạo', 
+                'Đọc hiểu chuyên sâu', 'Viết học thuật cao cấp'
+            ]
+        };
+        
+        // Define content for each subcategory
+        const subcategoryContent = {
+    'Te-Ka-Mo-Lo': '<h3 class="subcategory-title">Te-Ka-Mo-Lo</h3><p>Nội dung chi tiết về từ vựng A1-1 sẽ được hiển thị ở đây...</p>',
+
+
+    'Phát âm cơ bản': '<h3 class="subcategory-title">Phát âm cơ bản</h3><p>Nội dung chi tiết về phát âm cơ bản sẽ được hiển thị ở đây...</p>',
+    'Nghe hiểu A1': '<h3 class="subcategory-title">Nghe hiểu A1</h3><p>Nội dung chi tiết về nghe hiểu A1 sẽ được hiển thị ở đây...</p>',
+    'Đọc hiểu A1': '<h3 class="subcategory-title">Đọc hiểu A1</h3><p>Nội dung chi tiết về đọc hiểu A1 sẽ được hiển thị ở đây...</p>',
+    'Viết cơ bản': '<h3 class="subcategory-title">Viết cơ bản</h3><p>Nội dung chi tiết về viết cơ bản sẽ được hiển thị ở đây...</p>',
+    'Giao tiếp hàng ngày': '<h3 class="subcategory-title">Giao tiếp hàng ngày</h3><p>Nội dung chi tiết về giao tiếp hàng ngày sẽ được hiển thị ở đây...</p>',
+    'Từ vựng A1-2': '<h3 class="subcategory-title">Từ vựng A1-2</h3><p>Nội dung chi tiết về từ vựng A1-2 sẽ được hiển thị ở đây...</p>',
+    'Ngữ pháp ứng dụng': '<h3 class="subcategory-title">Ngữ pháp ứng dụng</h3><p>Nội dung chi tiết về ngữ pháp ứng dụng sẽ được hiển thị ở đây...</p>',
+    'Tổng hợp kiến thức A1': '<h3 class="subcategory-title">Tổng hợp kiến thức A1</h3><p>Nội dung chi tiết về tổng hợp kiến thức A1 sẽ được hiển thị ở đây...</p>',
+};
+
+// Phần Aussprache
+subcategoryContent['Aussprache/Phát âm'] = `
+  <h3 class="subcategory-title">Aussprache/Phát âm</h3>
+  <p class="mb-4">Dưới đây là bảng chữ cái tiếng Đức và các âm phổ biến kèm video. Nhấn vào từng nút để xem video phát âm.</p>
+
+  <h4 class="font-semibold mt-4 mb-2">🔤 Bảng chữ cái tiếng Đức:</h4>
+  <div id="alphabet-list" class="flex flex-wrap gap-2 my-2">
+    ${'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Ä Ö Ü ß'.split(' ').map(letter => `
+      <button 
+        class="alphabet-button px-3 py-2 bg-red-400 rounded hover:bg-blue-300 font-bold shadow"
+        data-letter="${letter}"
+      >
+        ${letter}
+      </button>
+    `).join('')}
+  </div>
+
+  <h4 class="font-semibold mt-8 mb-2">🗣️ Nguyên âm đơn:</h4>
+  <div class="flex flex-wrap gap-2 my-2">
+    ${['A','E','I','O','U'].map(vowel => `
+      <button class="alphabet-button px-3 py-2 bg-blue-400 rounded hover:bg-red-300 font-semibold shadow" data-letter="${vowel}">${vowel}</button>
+    `).join('')}
+  </div>
+
+  <h4 class="font-semibold mt-8 mb-2">🔗 Nguyên âm kép (Diphthongs):</h4>
+  <div class="flex flex-wrap gap-2 my-2">
+    ${['ei','ie','eu','äu','ai'].map(dip => `
+      <button class="alphabet-button px-3 py-2 bg-yellow-300 rounded hover:bg-green-300 font-semibold shadow" data-letter="${dip}">${dip}</button>
+    `).join('')}
+  </div>
+
+  <h4 class="font-semibold mt-8 mb-2">📦 Phụ âm thường gặp:</h4>
+  <div class="flex flex-wrap gap-2 my-2">
+    ${['W','V','S','Z','CH','sch','sp','st','ng','pf','ts','qu'].map(con => `
+      <button class="alphabet-button px-3 py-2 bg-green-100 rounded hover:bg-yellow-300 font-semibold shadow" data-letter="${con}">${con}</button>
+    `).join('')}
+  </div>
+
+  <div id="video-container" class="mt-6 hidden">
+    <h4 class="font-semibold mb-2">🎬 Video phát âm cho: <span id="video-letter" class="text-blue-600"></span></h4>
+    <video id="alphabet-video" width="360" height="240" controls class="rounded shadow-md">
+      <source id="video-source" src="" type="video/mp4">
+      Trình duyệt của bạn không hỗ trợ video.
+    </video>
+  </div>
+
+  <h4 class="font-semibold mt-10 mb-2">📚 Quy tắc bổ sung:</h4>
+  <ul class="list-disc pl-5 space-y-1">
+    <li><strong>Âm cuối thường làm nhẹ:</strong> ví dụ “ab” đọc như “ap”</li>
+    <li><strong>Âm "R":</strong> phía trước nguyên âm: rung nhẹ /ʁ/, cuối từ: gần như không đọc rõ (âm mờ)</li>
+    <li><strong>Trọng âm:</strong> thường rơi vào âm tiết đầu tiên; tiền tố như ge-, be-, ver- không mang trọng âm</li>
+  </ul>
+`;
+
+        
+        // Show subcategories when a main category is clicked
+        function showSubCategories(category) {
+            currentCategory = category;
+            
+            // Add fade-out animation to main categories
+            const mainCategories = document.getElementById('mainCategories');
+            mainCategories.classList.add('fade-out');
+            
+            // After animation completes, hide it and show subcategories
+            setTimeout(() => {
+                mainCategories.classList.add('hidden');
+                mainCategories.classList.remove('fade-out');
+                
+                // Update subcategories title
+                document.getElementById('currentCategoryTitle').textContent = `Lộ trình ${category}`;
+                
+                // Clear previous subcategories
+                const subCategories = document.getElementById('subCategories');
+                subCategories.innerHTML = '';
+                
+                // Add new subcategories
+                categories[category].forEach(sub => {
+                    const subElement = document.createElement('div');
+                    subElement.className = 'card bg-white rounded-lg p-4 text-center cursor-pointer fade-in border-2 border-yellow-500';
+                    subElement.innerHTML = `
+                        <h3 class="text-xl font-medium mb-1 text-black">${sub}</h3>
+                    `;
+                    subElement.onclick = () => showContent(sub);
+                    subCategories.appendChild(subElement);
+                });
+                
+                // Show subcategories container with fade-in animation
+                const subContainer = document.getElementById('subCategoriesContainer');
+                subContainer.classList.remove('hidden');
+                subContainer.classList.add('fade-in');
+            }, 500);
+        }
+        
+        // Show content when a subcategory is clicked
+        function showContent(subcategory) {
+            // Add fade-out animation to subcategories
+            const subContainer = document.getElementById('subCategoriesContainer');
+            subContainer.classList.add('fade-out');
+            
+            // After animation completes, hide it and show content
+            setTimeout(() => {
+                subContainer.classList.add('hidden');
+                subContainer.classList.remove('fade-out');
+                
+                // Update content
+                document.getElementById('contentTitle').textContent = subcategory;
+                
+                // Get content for the selected subcategory
+                let content = subcategoryContent[subcategory] || 
+                    `<h3 class="subcategory-title">${subcategory}</h3><p>Nội dung chi tiết về ${subcategory} sẽ được hiển thị ở đây. Đây là nội dung mẫu cho mục đích minh họa.</p>`;
+                document.getElementById('contentBody').innerHTML = content;
+                
+                // Show content container with fade-in animation
+                const contentContainer = document.getElementById('contentContainer');
+                contentContainer.classList.remove('hidden');
+                contentContainer.classList.add('fade-in');
+            }, 500);
+        }
+        
+        // Back to subcategories from content view
+        function backToSubCategories() {
+            const contentContainer = document.getElementById('contentContainer');
+            contentContainer.classList.add('fade-out');
+            
+            setTimeout(() => {
+                contentContainer.classList.add('hidden');
+                contentContainer.classList.remove('fade-out');
+                
+                const subContainer = document.getElementById('subCategoriesContainer');
+                subContainer.classList.remove('hidden');
+                subContainer.classList.add('fade-in');
+            }, 500);
+        }
+        
+        // Back to main categories from subcategories view
+        function backToMainCategories() {
+            const subContainer = document.getElementById('subCategoriesContainer');
+            subContainer.classList.add('fade-out');
+            
+            setTimeout(() => {
+                subContainer.classList.add('hidden');
+                subContainer.classList.remove('fade-out');
+                
+                const mainCategories = document.getElementById('mainCategories');
+                mainCategories.classList.remove('hidden');
+                mainCategories.classList.add('fade-in');
+            }, 500);
+        }
+
+        document.addEventListener('click', function (e) {
+  if (e.target.classList.contains('alphabet-button')) {
+    const letter = e.target.getAttribute('data-letter');
+    const videoContainer = document.getElementById('video-container');
+    const videoLetter = document.getElementById('video-letter');
+    const videoSource = document.getElementById('video-source');
+    const videoElement = document.getElementById('alphabet-video');
+
+    // Đường dẫn video - sửa tên và link thật ở đây
+    const videoLinks = {
+      'A': 'video/A.mp4', 'B': 'video/B.mp4', 'C': 'video/C.mp4', 'D': 'video/D.mp4', 'E': 'video/E.mp4',
+      'F': 'video/F.mp4', 'G': 'video/G.mp4', 'H': 'video/H.mp4', 'I': 'video/I.mp4', 'J': 'video/J.mp4',
+      'K': 'video/K.mp4', 'L': 'video/L.mp4', 'M': 'video/M.mp4', 'N': 'video/N.mp4', 'O': 'video/O.mp4',
+      'P': 'video/P.mp4', 'Q': 'video/Q.mp4', 'R': 'video/R.mp4', 'S': 'video/S.mp4', 'T': 'video/T.mp4',
+      'U': 'video/U.mp4', 'V': 'video/V.mp4', 'W': 'video/W.mp4', 'X': 'video/X.mp4', 'Y': 'video/Y.mp4',
+      'Z': 'video/Z.mp4', 'Ä': 'video/Ae.mp4', 'Ö': 'video/Oe.mp4', 'Ü': 'video/Ue.mp4', 'ß': 'video/ss.mp4',
+      'ei': 'video/ei.mp4', 'ie': 'video/ie.mp4', 'eu': 'video/eu.mp4', 'äu': 'video/aeu.mp4', 'ai': 'video/ai.mp4',
+      'CH': 'video/CH.mp4', 'sch': 'video/sch.mp4', 'sp': 'video/sp.mp4', 'st': 'video/st.mp4', 'ng': 'video/ng.mp4',
+      'pf': 'video/pf.mp4', 'ts': 'video/ts.mp4', 'qu': 'video/qu.mp4'
+    };
+
+    const videoUrl = videoLinks[letter] || '';
+    if (videoUrl) {
+      videoSource.src = videoUrl;
+      videoLetter.textContent = letter;
+      videoElement.load();
+      videoContainer.classList.remove('hidden');
+    }
+  }
+});
+
+    </script>
+</body>
+</html>

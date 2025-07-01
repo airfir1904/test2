@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dich Vụ Premium Banking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            min-height: 100vh;
+        }
+        .card {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            border: 1px solid rgba(209, 213, 219, 0.3);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+        .qr-container {
+            transition: all 0.3s ease;
+        }
+        .qr-container:hover {
+            transform: translateY(-5px);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(102, 126, 234, 0.4);
+        }
+        .notification {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="py-12 px-4 sm:px-6 lg:px-8">
+
+    <div style="position: absolute; top: 20px; left: 20px; z-index: 1000;">
+  <a href="index.html" style="padding: 10px 20px; background-color: white; color: black; text-decoration: none; border: 2px solid; border-radius: 8px; font-weight: bold;">
+    Home
+  </a>
+</div> 
+
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">Dịch Vụ Chuyển Khoản Premium</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Thanh toán nhanh chóng, bảo mật và tiện lợi với chất lượng dịch vụ cao cấp</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <!-- Thông tin chuyển khoản -->
+            <div class="card p-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-4">Thông Tin Chuyển Khoản</h2>
+                
+                <div class="space-y-6">
+                    <!-- QR Ngân hàng -->
+                    <div class="qr-container">
+                        <h3 class="text-lg font-medium text-gray-700 mb-3">Quét QR Ngân hàng</h3>
+                        <div class="flex justify-center mb-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a8d03a86-bee4-4af5-980a-e41e998c5f7f.png" alt="QR Code Ngân Hàng - Màu xanh dương với logo ngân hàng ở giữa, mã QR sắc nét trên nền trắng" class="rounded-lg border border-gray-200 p-2 bg-white" />
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="text-sm text-gray-600"><span class="font-medium">Ngân hàng:</span> Techcombank</p>
+                            <p class="text-sm text-gray-600"><span class="font-medium">Số tài khoản:</span> 1903 6666 8888</p>
+                            <p class="text-sm text-gray-600"><span class="font-medium">Tên chủ tài khoản:</span> CÔNG TY TNHH ABC</p>
+                            <p class="text-sm text-gray-600"><span class="font-medium">Nội dung:</span> Tên KH + SĐT</p>
+                        </div>
+                    </div>
+                    
+                    <!-- QR Momo -->
+                    <div class="qr-container mt-6">
+                        <h3 class="text-lg font-medium text-gray-700 mb-3">Quét QR Momo</h3>
+                        <div class="flex justify-center mb-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3b7f36ba-2b15-4d7c-b415-87c62b279335.png" alt="QR Code Momo - Màu tím đặc trưng của Momo với logo ở giữa, mã QR sắc nét trên nền trắng" class="rounded-lg border border-gray-200 p-2 bg-white" />
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="text-sm text-gray-600"><span class="font-medium">Số điện thoại:</span> 0903 123 456</p>
+                            <p class="text-sm text-gray-600"><span class="font-medium">Tên chủ tài khoản:</span> CÔNG TY TNHH ABC</p>
+                            <p class="text-sm text-gray-600"><span class="font-medium">Nội dung:</span> Tên KH + SĐT</p>
+                        </div>
+                    </div>
+
+                    <button id="confirmBtn" class="btn-primary w-full py-3 px-6 rounded-lg text-white font-medium mt-6">
+                       Xác nhận thanh toán 
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hướng dẫn chuyển khoản -->
+            <div class="card p-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-4">Hướng Dẫn Chuyển Khoản</h2>
+                
+                <div class="space-y-5">
+                    <!-- Bước 1 -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                            <span class="text-indigo-600 font-bold">1</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-800 mb-1">Chọn phương thức chuyển khoản</h3>
+                            <p class="text-gray-600">Bạn có thể chuyển khoản qua ngân hàng hoặc ví điện tử Momo</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Bước 2 -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                            <span class="text-indigo-600 font-bold">2</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-800 mb-1">Quét mã QR hoặc nhập thông tin</h3>
+                            <p class="text-gray-600">
+                                - Ngân hàng: Sử dụng ứng dụng ngân hàng để quét mã QR hoặc nhập thông tin thủ công
+                                <br>
+                                - Momo: Mở ứng dụng Momo, chọn "Quét QR" và quét mã trên website
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Bước 3 -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                            <span class="text-indigo-600 font-bold">3</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-800 mb-1">Nhập số tiền và nội dung</h3>
+                            <p class="text-gray-600">
+                                Nhập số tiền cần chuyển và ghi rõ nội dung theo hướng dẫn để xử lý nhanh chóng
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Bước 4 -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                            <span class="text-indigo-600 font-bold">4</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-800 mb-1">Xác nhận chuyển khoản</h3>
+                            <p class="text-gray-600">
+                                Kiểm tra lại thông tin và xác nhận chuyển khoản trên ứng dụng ngân hàng/Momo
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Bước 5 -->
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                            <span class="text-indigo-600 font-bold">5</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-800 mb-1">Nhấn nút xác nhận</h3>
+                            <p class="text-gray-600">
+                                Sau khi hoàn tất chuyển khoản, nhấn nút "Tôi đã chuyển khoản" để thông báo cho chúng tôi
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification -->
+        <div id="notification" class="card p-6 fixed bottom-8 left-1/2 transform -translate-x-1/2 w-full max-w-md opacity-0 hidden">
+            <div class="flex items-center">
+                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                    <svg class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-800">Thông Báo</h3>
+                    <p class="text-gray-600 mt-1">Vui lòng nhập thông tin để bọn em xác nhận ạ . Mật khẩu sẽ đc cung cấp qua số điện thoại hoặc E-Mail mà mọi người cung cấp  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Thêm vào sau nút xác nhận -->
+<div id="uploadSection" class="mt-6 hidden">
+  <form id="uploadForm" class="space-y-4" enctype="multipart/form-data">
+
+
+     <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Họ Và Tên</label>
+      <input type="text" name="fullname" class="w-full px-4 py-2 border rounded-lg" required placeholder="Nhập Họ Và Tên">
+    </div>
+
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Số điện thoại</label>
+      <input type="tel" name="phone" class="w-full px-4 py-2 border rounded-lg" required placeholder="Nhập số điện thoại">
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Địa chỉ Email </label>
+      <input type="tel" name="email" class="w-full px-4 py-2 border rounded-lg" required placeholder="Nhập  địa chỉ Email">
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Số tiền đã chuyển</label>
+      <input type="number" name="amount" class="w-full px-4 py-2 border rounded-lg" required placeholder="Nhập số tiền">
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Mã giao dịch</label>
+      <input type="text" name="transactionId" class="w-full px-4 py-2 border rounded-lg" required placeholder="Nhập mã giao dịch">
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Ảnh xác minh (JPG/PNG)</label>
+      <input type="file" name="proofFile" class="w-full px-4 py-2 border rounded-lg" accept="image/png, image/jpeg" required>
+    </div>
+    <button type="submit" class="btn-primary w-full py-3 px-6 rounded-lg text-white font-medium">
+      Gửi ảnh xác minh
+    </button>
+  </form>
+</div>
+
+<script>
+  const confirmBtn = document.getElementById('confirmBtn');
+  const uploadSection = document.getElementById('uploadSection');
+
+  confirmBtn.addEventListener('click', function() {
+    const notification = document.getElementById('notification');
+    notification.classList.remove('hidden');
+    notification.classList.add('notification');
+
+    this.disabled = true;
+    this.classList.add('opacity-50');
+
+    // Hiện form upload
+    uploadSection.classList.remove('hidden');
+
+    setTimeout(() => {
+      notification.classList.add('hidden');
+      notification.classList.remove('notification');
+    }, 3000);
+  });
+
+  // Gửi ảnh
+  const uploadForm = document.getElementById('uploadForm');
+  uploadForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const formData = new FormData(uploadForm);
+    const response = await fetch('/upload', {
+      method: 'POST',
+      body: formData
+    });
+    const result = await response.json();
+    alert(result.message);
+    uploadForm.reset();
+  });
+</script>
+
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('confirmBtn').addEventListener('click', function() {
+            const notification = document.getElementById('notification');
+            notification.classList.remove('hidden');
+            notification.classList.add('notification');
+            
+            // Hide the button to prevent multiple clicks
+            this.disabled = true;
+            this.classList.add('opacity-50');
+            
+            // Simulate processing time
+            setTimeout(() => {
+                notification.classList.add('hidden');
+                notification.classList.remove('notification');
+            }, 5000);
+        });
+
+
+
+        
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Mitglieder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            background-image: url('https://www.vandelaydesign.com/wp-content/uploads/beautiful-beach-at-sunset.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #000000;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            padding-top: 5vh;
+            padding-bottom: 2vh;
+        }
+        
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 5vh;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        
+        .member-card {
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-20px) scale(1.05);
+        }
+        
+        .member-img {
+         width: 190px;
+        height: 190px;
+         object-fit: cover;
+        object-position: center;
+       border-radius: 50%;
+        border: 3px solid #000000;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+       margin-bottom: 1rem;
+      }
+        
+        .member-info {
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .detail-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            display: none;
+            z-index: 100;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .detail-content {
+        animation: slideUp 0.5s ease;
+        background-color: #fff; /* màu nền trắng */
+        color: #000;            /* chữ màu đen để dễ đọc */
+       }
+
+        
+        .member-3d-model {
+            width: 300px;
+            height: 300px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .typing-effect {
+            border-right: 2px solid #fff;
+            animation: blinkCursor 0.7s infinite;
+        }
+        
+        @keyframes blinkCursor {
+            from, to { border-color: transparent }
+            50% { border-color: #fff }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" style="display: inline-block; padding: 10px 20px; background-color: white; color: black; text-decoration: none; border: 2px solid ; border-radius: 8px; font-weight: bold;">Home</a>
+    
+    <header class="flex flex-col items-center">
+        <h1 class="text-4xl font-bold text-center tracking-wider">TEAM MITGLIEDER</h1>
+    </header>
+    
+
+
+    <main class="flex-grow flex items-center">
+        <div class="member-grid" id="members-container">
+            <!-- Member 1 -->
+            <div class="member-card text-center cursor-pointer" onclick="showMemberDetail('AirFir')">
+                <img src="duy.jpg" alt="Hưng" class="member-img object-cover object-center">
+                <div class="member-info">
+                    <h3 class="text-xl font-semibold mb-2">AirFir</h3>
+                    <button class="px-4 py-2 bg-black text-white rounded-full font-medium hover:bg-red-200 transition mt-2">Details anzeigen</button>
+                </div>
+            </div>
+            
+            <!-- Member 2 -->
+            <div class="member-card text-center cursor-pointer" onclick="showMemberDetail('Nguyễn Tăng Gia Hưng')">
+                <img src="hưng.jpg" alt="Hưng" class="member-img object-cover object-center">
+                <div class="member-info">
+                    <h3 class="text-xl font-semibold mb-2">Nguyễn Tăng Gia Hưng</h3>
+                    <button class="px-4 py-2 bg-black text-white rounded-full font-medium hover:bg-red-200 transition mt-2">Details anzeigen</button>
+                </div>
+            </div>
+            
+            <!-- Member 3 -->
+            <div class="member-card text-center cursor-pointer" onclick="showMemberDetail('Vân Anh')">
+               <img src="va.png" alt="Vân Anh" class="member-img object-cover object-center">
+                <div class="member-info">
+                    <h3 class="text-xl font-semibold mb-2">Trần Vân Anh</h3>
+                    <button class="px-4 py-2 bg-black text-white rounded-full font-medium hover:bg-red-200 transition mt-2">Details anzeigen</button>
+                </div>
+            </div>
+            
+            <!-- Member 4 -->
+            <div class="member-card text-center cursor-pointer" onclick="showMemberDetail('S4')">
+                <img src="airfir1.png" alt="Hưng" class="member-img object-cover object-center">
+                <div class="member-info">
+                    <h3 class="text-xl font-semibold mb-2">S4</h3>
+                    <button class="px-4 py-2 bg-black text-white rounded-full font-medium hover:bg-gray-200 transition mt-2">Details anzeigen</button>
+                </div>
+            </div>
+            
+            <!-- Member 5 -->
+            <div class="member-card text-center cursor-pointer" onclick="showMemberDetail('S5')">
+               <img src="airfir1.png" alt="Hưng" class="member-img object-cover object-center">
+                <div class="member-info">
+                    <h3 class="text-xl font-semibold mb-2">S5</h3>
+                    <button class="px-4 py-2 bg-black text-white rounded-full font-medium hover:bg-gray-200 transition mt-2">Details anzeigen</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Detail Panel -->
+    <div class="detail-panel" id="detailPanel">
+        <div class="container mx-auto h-full flex items-center justify-center p-4">
+            <div class="detail-content bg-white rounded-xl p-8 max-w-5xl w-full border border-gray-800 relative">
+                <button class="close-btn absolute top-4 right-4 text-2xl font-bold text-red" onclick="hideMemberDetail()">✕</button>
+                
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="member-3d-model flex items-center justify-center" id="member3dModel">
+                       <div id="memberImageContainer" class="w-full h-full flex items-center justify-center">
+                          <div id="memberInitials" class="text-6xl font-bold">AF</div>
+                </div>
+
+                    </div>
+                    
+                    <div class="flex-1">
+                        <h2 class="text-3xl font-bold mb-6" id="memberName">AirFir</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-xl font-semibold mb-2">Rolle:</h4>
+                                <p class="typing-effect" id="memberRole">Lädt...</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold mb-2">Fähigkeiten:</h4>
+                                <p class="typing-effect" id="memberSkills">Lädt...</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold mb-2">Beschreibung:</h4>
+                                <p class="typing-effect" id="memberBio">Lädt...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Member data in German
+        const members = {
+            'AirFir': {
+                initials: 'AF',
+                role: 'Teamleiter / Entwickler',
+                skills: 'JavaScript, React, Node.js, UI/UX Design',
+                bio: 'AirFir ist der Teamleiter mit 5 Jahren Erfahrung in der Webentwicklung. Er ist verantwortlich für die Systemarchitektur und die Anleitung anderer Teammitglieder.',
+                image: 'tải xuống (8).png'
+            },
+            'Nguyễn Tăng Gia Hưng': {
+                initials: 'NGH',
+                role: 'Software-Ingenieur',
+                skills: 'Python, Maschinelles Lernen, Datenanalyse',
+                bio: 'Gia Hưng ist Experte für künstliche Intelligenz und Datenverarbeitung. Er hat an mehreren großen Datenanalyseprojekten gearbeitet.',
+                image: 'hưng.jpg'
+            },
+           'Vân Anh': {
+                initials: 'VA',
+                role: 'UI/UX-Designer',
+               skills: 'UI/UX Design, Figma, Adobe Creative Suite',
+                bio: 'Vân Anh ist eine talentierte Designerin mit einem ausgezeichneten ästhetischen Blick. Sie erstellt schöne und benutzerfreundliche Schnittstellen.',
+                image: 'va.png'
+            },
+
+            'S4': {
+                initials: 'S4',
+                role: 'Backend-Entwickler',
+                skills: 'Java, Spring Boot, SQL',
+                bio: 'S4 ist Experte für die Entwicklung leistungsstarker und sicherer Backend-Systeme. Er stellt sicher, dass das System stabil läuft.'
+            },
+            'S5': {
+                initials: 'S5',
+                role: 'Full-Stack-Entwickler',
+                skills: 'JavaScript, React, Node.js, MongoDB',
+                bio: 'S5 ist ein vielseitiger Entwickler, der sowohl im Frontend als auch im Backend arbeiten kann. Er löst Probleme schnell und effizient.'
+            }
+        };
+        
+        // Typing effect
+        function typeText(element, text, speed = 30) {
+            let i = 0;
+            element.textContent = '';
+            const typing = setInterval(() => {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typing);
+                    element.classList.remove('typing-effect');
+                }
+            }, speed);
+        }
+        
+        // Show member detail
+        function showMemberDetail(name) {
+    const container = document.getElementById('members-container');
+    const panel = document.getElementById('detailPanel');
+    const member = members[name];
+
+    // Ẩn các thẻ member khác bằng hiệu ứng
+    const allMembers = container.querySelectorAll('.member-card');
+    allMembers.forEach(m => {
+        if (m.querySelector('h3').textContent !== name) {
+            m.style.transform = 'translateX(150%)';
+            m.style.opacity = '0';
+        }
+    });
+
+    // Hiện panel chi tiết
+    panel.style.display = 'block';
+
+    // Gán tên
+    document.getElementById('memberName').textContent = name;
+
+    // Xử lý ảnh hoặc chữ viết tắt
+    const imageContainer = document.getElementById('memberImageContainer');
+    if (member.image) {
+        imageContainer.innerHTML = `
+            <img src="${member.image}" 
+                 alt="${name}" 
+                 class="w-full h-full object-cover rounded-lg" />
+        `;
+    } else {
+        imageContainer.innerHTML = `
+            <div id="memberInitials" 
+                 class="text-6xl font-bold">${member.initials}</div>
+        `;
+    }
+
+    // Hiển thị nội dung từng mục với hiệu ứng gõ chữ
+    const elements = [
+        { id: 'memberRole', text: member.role },
+        { id: 'memberSkills', text: member.skills },
+        { id: 'memberBio', text: member.bio }
+    ];
+
+    elements.forEach(item => {
+        const element = document.getElementById(item.id);
+        element.classList.add('typing-effect');
+        typeText(element, item.text);
+    });
+}
+
+        // Hide member detail
+        function hideMemberDetail() {
+            const container = document.getElementById('members-container');
+            const panel = document.getElementById('detailPanel');
+            
+            // Show all members again
+            const allMembers = container.querySelectorAll('.member-card');
+            allMembers.forEach(m => {
+                m.style.transform = '';
+                m.style.opacity = '1';
+            });
+            
+            // Hide detail panel
+            panel.style.display = 'none';
+            
+            // Reset typing effect
+            document.querySelectorAll('.typing-effect').forEach(el => {
+                el.classList.remove('typing-effect');
+            });
+        }
+    </script>
+</body>
+</html>

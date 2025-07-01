@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deutsch Prüfungsvorbereitung</title>
+    <style>
+        :root {
+            --primary-color: #13b910;
+            --secondary-color: #3498db;
+            --accent-color: #2980b9;
+            --text-color: #ecf0f1;
+            --background-color: #f5f7fa;
+            --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            background-image: url('https://haycafe.vn/wp-content/uploads/2022/03/Background-den-va-anh-den-san-khau.jpg'); /* ← đổi đường dẫn hình bạn muốn */
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+       .levels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cột mỗi hàng */
+    grid-template-rows: repeat(2, auto);   /* 2 hàng */
+    gap: 1.5rem;
+    justify-items: center;
+    margin-top: 150px;
+}
+
+.level-card {
+    width: 250px; /* nhỏ lại */
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+        .level-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .level-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .level-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .skills-container {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5rem;          /* khoảng cách nhỏ lại */
+  margin-top: 5rem;   /* kéo xuống thêm */
+}
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.0rem;
+            font-size: 1.0rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            width: 250px; 
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-card a {
+   display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;   /* bỏ gạch dưới */
+  color: #000000; /* giữ màu xanh đẹp */
+  font-weight: bold;      /* đậm để dễ click */
+  font-size: 1.1rem;      /* chỉnh size nếu muốn */
+}
+
+.skill-card a:hover {
+  text-decoration: underline; /* nếu muốn hover có gạch dưới thì thêm */
+}
+
+
+        .skill-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .exit-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 3.0rem;
+            cursor: pointer;
+            color: #ff0000;
+        }
+
+        .exit-btn:hover {
+            color: var(--secondary-color);
+        }
+
+        .disappear {
+            animation: disappear 0.5s ease forwards;
+        }
+
+        @keyframes disappear {
+            to {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+.logo-3d {
+    grid-column: 1 / span 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    perspective: 10000px; /* Tạo chiều sâu 3D */
+}
+
+.logo-3d img {
+  width: 200px;
+  height: auto;
+  animation: rotateLogo 4s linear infinite;
+}
+
+.logo-3d img:hover {
+  animation: swing 0.8s ease-in-out;
+}
+
+.logo-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    gap: 1rem;
+    justify-items: center;
+    align-items: center;
+    margin-top: 7.0rem;
+}
+
+#skills-A1 h2 {
+    margin-top: -3.5rem; /* hoặc -2rem nếu muốn cao hơn nữa */
+}
+
+#skills-A2 h2 {
+    margin-top: -3.5rem; /* hoặc -2rem nếu muốn cao hơn nữa */
+}
+
+#skills-B1 h2 {
+    margin-top: -3.5rem; /* hoặc -2rem nếu muốn cao hơn nữa */
+} 
+
+#skills-B2 h2 {
+    margin-top: -3.5rem; /* hoặc -2rem nếu muốn cao hơn nữa */
+} 
+
+#skills-C1 h2 {
+    margin-top: -3.5rem; /* hoặc -2rem nếu muốn cao hơn nữa */
+} 
+
+#skills-C2 h2 {
+    margin-top: -3.5rem; /* hoặc -2rem nếu muốn cao hơn nữa */
+} 
+
+.logo-layout .header-a2               { grid-column: 1 / span 3; grid-row: 1; }
+.logo-layout .skill-card:nth-of-type(1) { grid-column: 1; grid-row: 2; } /* Hören */
+.logo-layout .skill-card:nth-of-type(2) { grid-column: 3; grid-row: 2; } /* Lesen */
+.logo-layout .logo-3d                   { grid-column: 2; grid-row: 3; } /* Logo */
+.logo-layout .skill-card:nth-of-type(3) { grid-column: 1; grid-row: 4; } /* Schreiben */
+.logo-layout .skill-card:nth-of-type(4) { grid-column: 3; grid-row: 4; } /* Sprechen */
+
+
+
+
+
+/* ==== Flip 3D cho logo 2 mặt ==== */
+.logo-3d-flip {
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+  margin: 0 auto;
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.flip-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: flipLogo 4s linear infinite;
+}
+
+.flip-inner img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* hoặc 'cover' nếu bạn muốn ảnh lấp đầy */
+  backface-visibility: hidden;
+  border-radius: 12px;
+}
+
+
+/* Mặt trước */
+.flip-front {
+  transform: rotateY(0deg);
+}
+
+/* Mặt sau */
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+@keyframes flipLogo {
+  0%   { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+    </style>
+</head>
+<body>
+
+    <div style="position: absolute; top: 20px; left: 20px; z-index: 1000;">
+  <a href="index.html" style="padding: 10px 20px; background-color: rgb(0, 0, 0); color: rgb(255, 255, 255); text-decoration: none; border: 2px solid; border-radius: 8px; font-weight: bold;">
+    Home
+  </a>
+</div> 
+
+    <div class="container">
+        <header>
+            <h1>Deutsch Prüfungsvorbereitung</h1>
+        </header>
+
+       <div class="levels-grid">
+    <div class="level-card" data-level="A1" style="background-image: url('https://vovankienthuc.com/storage/pagedata/100447/img/upload/bianthegioi/thien-than-2.jpg');">
+        <h2>A1</h2>
+    </div>
+    <div class="level-card" data-level="A2" style="background-image: url('https://i.ex-cdn.com/vntravellive.com/files/news/2024/11/25/nguon-song--khi-anh-mat-troi-la-nghe-thuat-cua-su-song-120713.jpg');">
+        <h2>A2</h2>
+    </div>
+    <div class="level-card" data-level="B1" style="background-image: url('https://img.freepik.com/premium-photo/heart-made-fire-flames-black-background-red-heart-heart-fire_796128-46.jpg');">
+        <h2>B1</h2>
+    </div>
+    <div class="level-card" data-level="B2" style="background-image: url('https://img.freepik.com/photos-premium/coeur-bleu-flocon-neige-interieur_87646-25905.jpg');">
+        <h2>B2</h2>
+    </div>
+    <div class="level-card" data-level="C1" style="background-image: url('https://png.pngtree.com/background/20230612/original/pngtree-the-moon-in-the-sky-above-the-tree-bed-is-reflected-picture-image_3184601.jpg');">
+        <h2>C1</h2>
+    </div>
+    <div class="level-card" data-level="C2" style="background-image: url('https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/474114mwh/anh-buon-than-chet_101431264.jpg');">
+        <h2>C2</h2>
+    </div>
+</div> 
+
+<div id="skills-A1" class="skills-container logo-layout" style="display:none">
+  <button class="exit-btn">×</button>
+
+  <div class="a1-title" style="grid-column: 2; grid-row: 1; text-align: center;">
+    <h2>Prüfungsvorbereitung A1</h2>
+  </div>
+
+  <div class="skill-card" style="grid-column: 1; grid-row: 2;"><a href="hören a1.html">Hören A1</a></div>
+  <div class="skill-card" style="grid-column: 3; grid-row: 2;"><a href="lesen a1.html">Lesen A1</a></div>
+
+  <div class="logo-3d-flip" style="grid-column: 2; grid-row: 3;">
+    <div class="flip-inner">
+      <img src="airfir1.png" alt="Front Logo" class="flip-front" />
+      <img src="airfir2.png" alt="Back Logo" class="flip-back" />
+    </div>
+  </div>
+
+  <div class="skill-card" style="grid-column: 1; grid-row: 4;"><a href="schreiben a1.html">Schreiben A1</a></div>
+  <div class="skill-card" style="grid-column: 3; grid-row: 4;"><a href="sprechen a1.html">Sprechen A1</a></div>
+</div>
+
+<div id="skills-A2" class="skills-container logo-layout" style="display:none">
+  <button class="exit-btn">×</button>
+
+  <div class="a2-title" style="grid-column: 2; grid-row: 1; text-align: center;">
+    <h2>Prüfungsvorbereitung A2</h2>
+  </div>
+
+  <div class="skill-card" style="grid-column: 1; grid-row: 2;"><a href="hören a2.html">Hören A2</a></div>
+  <div class="skill-card" style="grid-column: 3; grid-row: 2;"><a href="lesen a2.html">Lesen A2</a></div>
+
+  <div class="logo-3d-flip" style="grid-column: 2; grid-row: 3;">
+    <div class="flip-inner">
+      <img src="airfir1.png" alt="Front Logo" class="flip-front" />
+      <img src="airfir2.png" alt="Back Logo" class="flip-back" />
+    </div>
+  </div>
+
+  <div class="skill-card" style="grid-column: 1; grid-row: 4;"><a href="schreiben a2.html">Schreiben a2</a></div>
+  <div class="skill-card" style="grid-column: 3; grid-row: 4;"><a href="sprechen a2.html">Sprechen a2</a></div>
+</div>
+
+
+<div id="skills-B1" class="skills-container logo-layout" style="display:none">
+  <button class="exit-btn">×</button>
+
+  <div class="B1-title" style="grid-column: 2; grid-row: 1; text-align: center;">
+    <h2>Prüfungsvorbereitung B1</h2>
+  </div>
+
+  <div class="skill-card" style="grid-column: 1; grid-row: 2;"><a href="hören B1.html">Hören B1</a></div>
+  <div class="skill-card" style="grid-column: 3; grid-row: 2;"><a href="lesen B1.html">Lesen B1</a></div>
+
+  <div class="logo-3d-flip" style="grid-column: 2; grid-row: 3;">
+    <div class="flip-inner">
+      <img src="airfir1.png" alt="Front Logo" class="flip-front" />
+      <img src="airfir2.png" alt="Back Logo" class="flip-back" />
+    </div>
+  </div>
+
+  <div class="skill-card" style="grid-column: 1; grid-row: 4;"><a href="schreiben B1.html">Schreiben B1</a></div>
+  <div class="skill-card" style="grid-column: 3; grid-row: 4;"><a href="sprechen B1.html">Sprechen B1</a></div>
+</div>
+
+<div id="skills-B2" class="skills-container logo-layout" style="display:none">
+  <button class="exit-btn">×</button>
+
+  <div class="B2-title" style="grid-column: 2; grid-row: 1; text-align: center;">
+    <h2>Prüfungsvorbereitung B2</h2>
+  </div>
+
+  <div class="skill-card" style="grid-column: 1; grid-row: 2;"><a href="hören B2.html">Hören B2</a></div>
+  <div class="skill-card" style="grid-column: 3; grid-row: 2;"><a href="lesen B2.html">Lesen B2</a></div>
+
+    <div class="logo-3d-flip" style="grid-column: 2; grid-row: 3;">
+    <div class="flip-inner">
+      <img src="airfir1.png" alt="Front Logo" class="flip-front" />
+      <img src="airfir2.png" alt="Back Logo" class="flip-back" />
+    </div>
+  </div>
+
+
+  <div class="skill-card" style="grid-column: 1; grid-row: 4;"><a href="schreiben B2.html">Schreiben B2</a></div>
+  <div class="skill-card" style="grid-column: 3; grid-row: 4;"><a href="sprechen B2.html">Sprechen B2</a></div>
+</div>
+
+<div id="skills-C1" class="skills-container logo-layout" style="display:none">
+  <button class="exit-btn">×</button>
+
+  <div class="C1-title" style="grid-column: 2; grid-row: 1; text-align: center;">
+    <h2>Prüfungsvorbereitung C1</h2>
+  </div>
+
+  <div class="skill-card" style="grid-column: 1; grid-row: 2;"><a href="hören C1.html">Hören C1</a></div>
+  <div class="skill-card" style="grid-column: 3; grid-row: 2;"><a href="lesen C1.html">Lesen C1</a></div>
+
+  <div class="logo-3d-flip" style="grid-column: 2; grid-row: 3;">
+    <div class="flip-inner">
+      <img src="airfir1.png" alt="Front Logo" class="flip-front" />
+      <img src="airfir2.png" alt="Back Logo" class="flip-back" />
+    </div>
+  </div>
+
+  <div class="skill-card" style="grid-column: 1; grid-row: 4;"><a href="schreiben C1.html">Schreiben C1</a></div>
+  <div class="skill-card" style="grid-column: 3; grid-row: 4;"><a href="sprechen C1.html">Sprechen C1</a></div>
+</div>
+
+<div id="skills-C2" class="skills-container logo-layout" style="display:none">
+  <button class="exit-btn">×</button>
+
+  <div class="C2-title" style="grid-column: 2; grid-row: 1; text-align: center;">
+    <h2>Prüfungsvorbereitung C2</h2>
+  </div>
+
+  <div class="skill-card" style="grid-column: 1; grid-row: 2;"><a href="hören C2.html">Hören C2</a></div>
+  <div class="skill-card" style="grid-column: 3; grid-row: 2;"><a href="lesen C2.html">Lesen C2</a></div>
+
+ <div class="logo-3d-flip" style="grid-column: 2; grid-row: 3;">
+    <div class="flip-inner">
+      <img src="airfir1.png" alt="Front Logo" class="flip-front" />
+      <img src="airfir2.png" alt="Back Logo" class="flip-back" />
+    </div>
+  </div>
+
+  <div class="skill-card" style="grid-column: 1; grid-row: 4;"><a href="schreiben C2.html">Schreiben C2</a></div>
+  <div class="skill-card" style="grid-column: 3; grid-row: 4;"><a href="sprechen C2.html">Sprechen C2</a></div>
+</div>
+
+
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+    const levelCards = document.querySelectorAll('.level-card');
+    const levelsGrid = document.querySelector('.levels-grid');
+    const exitBtns = document.querySelectorAll('.exit-btn');
+
+    const skillSections = {
+        A1: document.getElementById('skills-A1'),
+        A2: document.getElementById('skills-A2'),
+        B1: document.getElementById('skills-B1'),
+        B2: document.getElementById('skills-B2'),
+        C1: document.getElementById('skills-C1'),
+        C2: document.getElementById('skills-C2')
+    };
+
+    levelCards.forEach(card => {
+        card.addEventListener('click', function () {
+            const level = this.getAttribute('data-level');
+
+            // Ẩn tất cả sections
+            Object.values(skillSections).forEach(section => section.style.display = 'none');
+
+            // Hiện section tương ứng
+            skillSections[level].style.display = 'grid';
+            levelsGrid.style.display = 'none';
+        });
+    });
+
+    exitBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            // Ẩn tất cả skills sections
+            Object.values(skillSections).forEach(section => section.style.display = 'none');
+            levelsGrid.style.display = 'grid';
+        });
+    });
+});
+
+            document.querySelectorAll('.skill-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const skill = this.getAttribute('data-skill');
+                    const level = levelTitle.textContent.split(' ')[1];
+                    
+                    // In a real implementation, this would redirect to the appropriate page
+                    alert(`Sie haben ${skill.toUpperCase()} für ${level} ausgewählt. Diese Funktion würde Sie zu einer speziellen Übungsseite weiterleiten.`);
+                    
+                    // Example of what would happen:
+                    // window.location.href = `/${level}/${skill}.html`;
+                });
+            });
+    
+    </script>
+</body>
+</html>

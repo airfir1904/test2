@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Học Tiếng Đức</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+             background-image: url('https://st.depositphotos.com/30440304/54498/i/450/depositphotos_544987876-stock-photo-style-black-background-geometric-layers.jpg'); /* ← đổi đường dẫn hình bạn muốn */
+           background-size: cover;
+          background-position: center;
+           background-repeat: no-repeat;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            color: #ff0000;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .cards-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .card {
+            background-color: #000000;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 150px; /* Đặt chiều rộng cố định cho thẻ */
+        }
+        .card:hover {
+            background-color: #eaeaea;
+            transform: translateY(-2px);
+        }
+        .content {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%; /* Đặt chiều rộng 100% cho nội dung */
+            max-width: 600px; /* Giới hạn chiều rộng tối đa */
+        }
+        a {
+            color: #ff0000;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+.level-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap; /* Giữ các section nằm trên 1 hàng */
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 200px;
+}
+
+.cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+    </style>
+</head>
+<body>
+<div style="position: absolute; top: 20px; left: 20px; z-index: 1000;">
+  <a href="index.html" style="padding: 10px 20px; background-color: white; color: black; text-decoration: none; border: 2px solid; border-radius: 8px; font-weight: bold;">
+    Home
+  </a>
+</div>
+
+
+<div class="header">
+    <h1>Dokumenten</h1>
+    <h3> Mọi Người ấn vô từng mục và kéo xuống dưới mấy chữ trong bảng dưới sẽ dẫn mọi người tới link để tài liệu </h3>
+</div>
+
+<main>
+    <section class="page" role="region" aria-label="Nội dung">
+       <h1>Trình độ</h1>
+
+<div class="level-row">
+    <section id="page-A1" class="page" role="region" aria-label="Nội dung A1">
+        <h1>A1</h1>
+        <div class="cards-grid">
+            <div class="card" data-subpage="Prüfung">Prüfung</div>
+            <div class="card" data-subpage="Grammatik">Grammatik</div>
+            <div class="card" data-subpage="Verben">Verben</div>
+            <div class="card" data-subpage="Wörter">Wörter</div>
+        </div>
+    </section>
+
+    <section id="page-A2" class="page" role="region" aria-label="Nội dung A2">
+        <h1>A2</h1>
+        <div class="cards-grid">
+            <div class="card" data-subpage="A2-1">Prüfung</div>
+            <div class="card" data-subpage="A2-2">Grammatik</div>
+            <div class="card" data-subpage="A2-3">Verben</div>
+            <div class="card" data-subpage="A2-4">Wörter</div>
+        </div>
+    </section>
+
+    <section id="page-B1" class="page" role="region" aria-label="Nội dung B1">
+        <h1>B1</h1>
+        <div class="cards-grid">
+            <div class="card" data-subpage="B1-1">Prüfung</div>
+            <div class="card" data-subpage="B1-2">Grammatik</div>
+            <div class="card" data-subpage="B1-3">Verben</div>
+            <div class="card" data-subpage="B1-4">Wörter</div>
+            <div class="card" data-subpage="B1-5">Tài liệu ôn thi</div>
+        </div>
+    </section>
+</div>
+
+<div class="level-row">
+    <section id="page-B2" class="page" role="region" aria-label="Nội dung B2">
+        <h1>B2</h1>
+        <div class="cards-grid">
+            <div class="card" data-subpage="B2-1">Prüfung</div>
+            <div class="card" data-subpage="B2-2">Grammatik</div>
+            <div class="card" data-subpage="B2-3">Tài liệu ôn thi</div>
+            <div class="card" data-subpage="B2-4">Wörter</div>
+        </div>
+    </section>
+
+    <section id="page-C1" class="page" role="region" aria-label="Nội dung C1">
+        <h1>C1</h1>
+        <div class="cards-grid">
+            <div class="card" data-subpage="C1-1">C1 Chủ đề 1</div>
+            <div class="card" data-subpage="C1-2">C1 Chủ đề 2</div>
+            <div class="card" data-subpage="C1-3">C1 Chủ đề 3</div>
+            <div class="card" data-subpage="C1-4">C1 Chủ đề 4</div>
+        </div>
+    </section>
+
+    <section id="page-C2" class="page" role="region" aria-label="Nội dung C2">
+        <h1>C2</h1>
+        <div class="cards-grid">
+            <div class="card" data-subpage="C2-1">C2 Chủ đề 1</div>
+            <div class="card" data-subpage="C2-2">C2 Chủ đề 2</div>
+            <div class="card" data-subpage="C2-3">C2 Chủ đề 3</div>
+            <div class="card" data-subpage="C2-4">C2 Chủ đề 4</div>
+        </div>
+    </section>
+
+    <section id="page-Information" class="page" role="region" aria-label="Nội dung Information">
+        <h1>Mehrere Information</h1>
+        <div class="cards-grid" role="list">
+          <div role="listitem" tabindex="0" class="card" data-subpage="I-1">Wortschatz</div>
+          <div role="listitem" tabindex="0" class="card" data-subpage="I-2">Infor 1 </div>
+          <div role="listitem" tabindex="0" class="card" data-subpage="I-3">Infor 2</div>
+          <div role="listitem" tabindex="0" class="card" data-subpage="I-4">Infor 3</div>
+          <div role="listitem" tabindex="0" class="card" data-subpage="I-5">Infor 4</div>
+          <div role="listitem" tabindex="0" class="card" data-subpage="I-7">Infor 7</div>
+          <div role="listitem" tabindex="0" class="card" data-subpage="I-6">Tài liệu</div>
+        </div>
+      </section>
+
+</div>
+
+    </section>
+
+    <div class="content" id="subpage-content">
+        <!-- Nội dung sẽ được hiển thị ở đây khi người dùng chọn một thẻ -->
+    </div>
+</main>
+
+<script>
+    const subpageContents = {
+    "Prüfung": [
+      { title: "Hören : ", link: "https://drive.google.com/file/d/1a93y859p_gmEnihkTHT1nZ4vyjZCpJYj/view?usp=drive_link" },
+      { title: "Lesen : ", link: "https://drive.google.com/drive/folders/1-5zaqJu8O6hYJURVJnbVnsCedxLzGCke?usp=drive_link" },
+      { title: "Schreiben : ", link: "https://drive.google.com/drive/folders/1x1tsq10spis4xoctrZdVCI4arcyFE68o?usp=drive_link" },
+      { title: "Sprechen : ", link: "https://drive.google.com/drive/folders/1RGzpUqbaxMREbqIF4475xsyJXQkoh1kZ?usp=drive_link" },
+    ],
+    "Grammatik": [
+      { title: "Personalpronomen : ", link: "https://drive.google.com/drive/folders/1naaV6GEP6WSNlrKEMApmMX6v0R04sYL9?usp=drive_link" },
+      { title: "Artikel  : ", link: "https://drive.google.com/file/d/15VDLOWvzutbAZJJi04LUhKjNlQX3OuaC/view?usp=drive_link" },
+      { title: "Các loại cấu trúc câu : ", link: "https://drive.google.com/file/d/1sZ_w4orMHkq5WlxY2gzeNU8JCROmPoeX/view?usp=drive_link" },
+      { title: "Các loại thì : ", link: "https://drive.google.com/file/d/1K2-i8g8aZ0NPVjOi0k4fwEDZwWyM8Z22/view?usp=drive_link" },
+      { title: "Động từ mạnh yếu bất quy tắc ( phân tích )  : ", link: "https://drive.google.com/file/d/1udRoJ_v9eH6MiVbjNLWRV0FOKSdF2PSu/view?usp=drive_link" },
+      { title: "Động từ tiền tố  : ", link: "https://drive.google.com/file/d/1UT2qP05KivKAeC46kLscAjQ33dTwUjyn/view?usp=drive_link" },
+      { title: "Kein vs Nicht : ", link: "https://drive.google.com/file/d/1DwlQU1HcURqIILYJanxxRfv02Dvac8HB/view?usp=drive_link" },
+      { title: "Komparativ  : ", link: "https://drive.google.com/file/d/1OULccxzfMJtJf1O15c7qtU0D4B3P6LAk/view?usp=drive_link" },
+      { title: "Konjugation : ", link: "https://drive.google.com/file/d/1iftNl5xJ3Xi4vz9NzgLmmWf_wKyQXyHn/view?usp=drive_link" },
+      { title: "LỘ TRÌNH A1 : ", link: "https://drive.google.com/file/d/1i4Uc-a3Or2m7uO96r5kKiKJ3V5-s0Kh0/view?usp=drive_link" },
+      { title: "Modalverben : ", link: "https://drive.google.com/file/d/1vlrGA3DnK9MPoZuGP_VaQrA-t4-z8O9q/view?usp=drive_link" },
+      { title: "Nominativ, Akkusativ , Dativ , Genitiv  : ", link: "https://drive.google.com/file/d/14B6sTKQDJ_BzB4iMZNeNfd1VmVLOE6aA/view?usp=drive_link" },
+      { title: "Phân biệt N -A -D -G  : ", link: "https://drive.google.com/file/d/1jBQfs5YNgrZoonpYlOVHfup0Nn1RbGQK/view?usp=drive_link" },
+      { title: "Präpositionen : ", link: "https://drive.google.com/file/d/12PakIAup6POviQY8BtQ-akwwAn-hx-9g/view?usp=drive_link" },
+      { title: "Prossessiveartikel  : ", link: "https://drive.google.com/file/d/1UdGJdPk8qfDxQoXw8AMOCdTUknb0KzbE/view?usp=drive_link" },
+      { title: "Quy tắc đọc giờ : ", link: "https://drive.google.com/file/d/1VGrwq_7E_ePsx4I_nmM3OS1oo-d9mDYD/view?usp=drive_link" },
+      { title: "Quy tắc phát âm   : ", link: "https://drive.google.com/file/d/17vvp_zCSxtXZghob2r7ArXY89xNeBaBv/view?usp=drive_link" },
+      { title: "Sein vs Haben : ", link: "https://drive.google.com/file/d/1M6mrqAsd7eELWGn-wBn2zKiRnJCSQbei/view?usp=drive_link" },
+      { title: "Tekamolo  : ", link: "https://drive.google.com/file/d/1xwmdF3uk5bb09jMT7pO2S6cAHesCBu8h/view?usp=drive_link" },
+      { title: "Trạng từ : ", link: "https://drive.google.com/file/d/1_eT4S0JSeY-h1CWqwTxL2F0swe80T_qG/view?usp=drive_link" },
+      { title: "W-Fragen und JaNein Fragen : ", link: "https://drive.google.com/file/d/1f8MCPuD9oeZEQy4xs0GMtr2JSiksNb5K/view?usp=drive_link" },
+      { title: "temporalen Präpositionen    : ", link: "https://drive.google.com/file/d/1hvj5hgz_0CwXfCxkTlggDPGy35fvTlQ6/view?usp=drive_link" },
+    ],
+    "Verben": [
+      { title: "100 Động từ phổ biến A1 : ", link: "https://drive.google.com/file/d/1vYfKJvUWqWadWvaRtjmIm_GheQPOckpm/view?usp=drive_link" },
+      { title: "Động từ A1 ( mạnh yếu bqt ) : ", link: "https://drive.google.com/file/d/1Hrh5pzDc3ZpcmyJ7XCa83DO6ImMnGopy/view?usp=drive_link" },
+    ],
+    "Wörter": [
+      { title: "A1 Menschen Wortschatz : ", link: "https://docs.google.com/spreadsheets/d/11ZgD6thwgBJPlYZPX_YXa0Npv9dj7akz/edit?usp=drive_link&ouid=104474934978528548098&rtpof=true&sd=true" },
+      { title: "Wortschatz A1 : ", link: "https://drive.google.com/file/d/177UZJ8umHWsHbcqPcSgoSYByJZZbkRho/view?usp=drive_link" },
+    ],
+    
+
+   
+
+    "A2-1": [
+      { title: "Hören ( Link nghe  ) : ", link: "https://www.youtube.com/watch?v=hH7lbatOrMI&list=PLg78ckjpHfZzy9rvr_CmY73BLJiPTiaXL" },
+      { title: "Lesen ( Link đọc ): ", link: "https://www.youtube.com/watch?v=biSxCsuV138&list=PLg78ckjpHfZy-xlZz9RNInntby-GN1md3" },
+      { title: "Schreiben  ( Link viết ): ", link: "https://www.youtube.com/watch?v=-4eBKIPPhLk&list=PL_Odo11kAz2dllYDa75Cgt4Gjrb2kEtUU" },
+      { title: "Sprechen : ", link: "https://drive.google.com/file/d/1OQrZAPcWmW7F3aWklTEQ7nXs43EbVW_c/view?usp=drive_link" },
+    ],
+
+    "A2-2": [
+      { title: "Konjunktionen : ", link: "https://drive.google.com/drive/folders/1I8aI8dKSHbHv5qeywtKf0rP4buZVQ3B5?usp=drive_link" },
+      { title: "Passiv : ", link: "https://drive.google.com/drive/folders/18p_-tpvKITQzZjl7mvppVqHRmqnz57iJ?usp=drive_link" },
+      { title: "Konjunktiv II : ", link: "https://drive.google.com/file/d/1b6bmLJO7vzxLXs8MnxIq3z_yUH1NSd-H/view?usp=drive_link" },
+      { title: "Lassen : ", link: "https://drive.google.com/file/d/1ybCMUEadl0O9w_OIB0RM2AbsixolQUzU/view?usp=drive_link" },
+      { title: "Lộ Trình A2  : ", link: "https://drive.google.com/file/d/1i9fPW39eu5QN8_XQWKvrhk9j4F9Qn007/view?usp=drive_link" },
+      { title: "Lokale Präposition  : ", link: "https://drive.google.com/file/d/1eE1f_v_g2EUQXXwHP4fcPZ9xFniMuITP/view?usp=drive_link" },
+      { title: "Relativsatz : ", link: "https://drive.google.com/file/d/1AveospuSr-VRa7A7CgTdx1vu6dbidGUE/view?usp=drive_link" },
+      { title: "Verben mit Präposition  : ", link: "https://drive.google.com/file/d/1dStXf9F_3AW6YtChzYrByMMr98TZl9lB/view?usp=drive_link" },
+      { title: "Zu : ", link: "https://drive.google.com/file/d/1gyYF-fKDnQUobK44KPUYuJc9LH6pjSBB/view?usp=drive_link" },
+    
+    ],
+
+    "A2-3":[
+      { title: "Động từ A2 : ", link: "https://drive.google.com/file/d/1MOqdqBh-zdQL2tTzpHkfJuczztmNLX2f/view?usp=drive_link" },
+    ],
+
+    "A2-4": [
+      { title: "A2 Menschenbuch  Wortschatz : ", link: "https://docs.google.com/spreadsheets/d/1HFY3BlVxV75hmb0RNr1MNFi6HjGOjPB2/edit?usp=drive_link&ouid=104474934978528548098&rtpof=true&sd=true" },
+      { title: "Wortschatz A2  : ", link: "https://drive.google.com/file/d/19DGZ2-NlzOK1f-lESnWcCzfKBmR98DKe/view?usp=drive_link" },
+    ],
+    "B1-1":  [
+      { title: "Hören ( Link nghe  ) : ", link: "https://www.youtube.com/watch?v=FLn9tZ_gUMY" },
+      { title: "Lesen ( Link đọc ): ", link: "https://www.youtube.com/watch?v=7XvupkNehoE&list=PLae7akOgwPoh8BnJRLlvrgvgMgLOi5QU8" },
+      { title: "Schreiben  : ", link: "https://drive.google.com/drive/folders/1voZmVzGXi26flppDYJ-H4ScppLJVbHyg?usp=drive_link" },
+      { title: "Sprechen : ", link: "https://drive.google.com/drive/folders/1L5A0Gwe0E3BEGzHolTNkqlOGf5rDFYFg?usp=drive_link" },
+    ],
+    "B1-2": [
+  { title: "Adjektiv : ", link: "https://drive.google.com/drive/folders/1oIwlmO1aa38d_lqBIQLAMR_nX6x5-YY_?usp=drive_link" },
+  { title: "Reflexiveverben  :", link: "https://drive.google.com/drive/folders/1EsWk-h3DSPopnsKGUYvz32u2oGwhME6q?usp=drive_link" },
+  { title: "Adjektivdeklination mit Komparativ und Superlativ :", link: "https://drive.google.com/file/d/1_WdJWaAYUjEe3ms3_QBsTdEXPRw1DIHn/view?usp=drive_link" },
+  { title: "Als ob :", link: "https://drive.google.com/file/d/1IPYi3QnKV-CMdsaDSCJ2AZYJKVjUzZIA/view?usp=drive_link" },
+  { title: "Außer :", link: "https://drive.google.com/file/d/1jp4CYyZ2cru1HweTeFf9BG1u-R9PttaH/view?usp=drive_link" },
+  { title: "da und indem  :", link: "https://drive.google.com/file/d/1vT9_oSrK5erHIu9AJiiyfKeGpus8lImR/view?usp=drive_link" },
+  { title: "Entweder... oder  :", link: "https://drive.google.com/file/d/15bvpWu-H7z3r33R8XxGAQD---X-5lPhE/view?usp=drive_link" },
+  { title: "Falls  :", link: "https://drive.google.com/file/d/1Kt8HZek6kSthtGBstHs2_nfFlxBEeWMY/view?usp=drive_link" },
+  { title: "Futur I :", link: "https://drive.google.com/file/d/11p8oWCfW39An2aznvUK3uqC-FIgBW0o_/view?usp=drive_link" },
+  { title: "Genitiv  :", link: "https://drive.google.com/file/d/1OsYsJK0JHlktTw9gaXoKOS4W1w1ZkC47/view?usp=drive_link" },
+  { title: "Je... desto /umso  :", link: "https://drive.google.com/file/d/1oGKJY4_N8I70MESF0yjEh56_skLhslnN/view?usp=drive_link" },
+  { title: "Konjunktiv II Vergangenheit  :", link: "https://drive.google.com/file/d/1wc4UQOxjwkRqm7H6hVhZbeUmgPIq9eSa/view?usp=drive_link" },
+  { title: "Lộ Trình B1  :", link: "https://drive.google.com/file/d/1zHR97O4UbmWFObfWWCu0aB8ArJLlhMvo/view?usp=drive_link" },
+  { title: "Nicht nur ..., sondern auch  :", link: "https://drive.google.com/file/d/1RU2eHKpeQH6CV2vR6syqqf5qUWREIU8E/view?usp=drive_link" },
+  { title: "Obwohl Als  :", link: "https://drive.google.com/file/d/1UU2sDgLCmHFaiP--Tig6IFxyNGmWwf4n/view?usp=drive_link" },
+  { title: "Ohne dass  :", link: "https://drive.google.com/file/d/1tjrVtHPPtmXz176WtySaFFBVI5sKrANq/view?usp=drive_link" },
+  { title: "Ohne...zu  :", link: "https://drive.google.com/file/d/1AoS3-yKYU68qyofVGg3L-0RrxuHcjFFo/view?usp=drive_link" },
+  { title: "Partizip Präsens   :", link: "https://drive.google.com/file/d/1ENnxw9Eg6e-sIcgm8UXpNjlNHBsypSSF/view?usp=drive_link" },
+  { title: "Passiv Perfekt/ Präteritum  :", link: "https://drive.google.com/file/d/1lye-pMsPanylqt4fwB7BCsmFd9GC4Miy/view?usp=drive_link" },
+  { title: "Plusquamperfekt   :", link: "https://drive.google.com/file/d/12LuVh6fIgQsPOp_oF7w1HGcAAMfFMNjZ/view?usp=drive_link" },
+  { title: "Präteritum   :", link: "https://drive.google.com/file/d/1pnFC4DmcGzqR5_yXV50sTmL_HBHquZCg/view?usp=drive_link" },
+  { title: "Sowohl ....als auch   :", link: "https://drive.google.com/file/d/1pKcDaGAIYFTsTmFjV9F_zuNm4cKb0Au1/view?usp=drive_link" },
+  { title: "Statt...zu   :", link: "https://drive.google.com/file/d/1Vt-yehUYwMRLpUJ36Ye5hAOe68SnjqTH/view?usp=drive_link" },
+  { title: "Trotz   :", link: "https://drive.google.com/file/d/1b6ZnH7lphFoPGsEtUsqyWxV2uqTFxxU1/view?usp=drive_link" },
+  { title: "Um...zu   :", link: "https://drive.google.com/file/d/1A5uPq5EfwbhYJDLRaNLpXcbyT0kpx8eA/view?usp=drive_link" },
+  { title: "Während/Außerhalb/Innerhalb   :", link: "https://drive.google.com/file/d/1rLSvzCdg8JDqnivrRhhRJrs2BJPLGCWd/view?usp=drive_link" },
+  { title: "Weder... noch :", link: "https://drive.google.com/file/d/1I8Ie-ktBvQi4-8nEGFvxKDlplsd_duOu/view?usp=drive_link" },
+  { title: "Wegen  :", link: "https://drive.google.com/file/d/1DgPYpeNO6231yv2FZxtA0v2GJloeSQfm/view?usp=drive_link" },
+  { title: "Zwar..., aber  :", link: "https://drive.google.com/file/d/1kR0bW_LAS8hKkiPfuRE9bgyZUsZqs3ee/view?usp=drive_link" }
+],
+    "B1-3": [
+      { title: "Động từ B1 : ", link: "https://drive.google.com/file/d/1s1gRjeObfShzEMFipwVBKVjwMLWWzhff/view?usp=drive_link" },
+      { title: "Verben ( Schritt neu 6 ) : ", link: "https://drive.google.com/file/d/1G916CnhQW6KTJXc5T7yYvpictcGuzq-T/view?usp=drive_link" },
+      { title: "Verben B1 ( Schritt 5 ) : ", link: "https://drive.google.com/file/d/1l_JBTufdlqzsRhDEoasOgubMVj0tqYkn/view?usp=drive_link" },
+    ],
+ 
+    "B1-4":  [
+      { title: "Schritt Plus Neu 6 : ", link: "https://drive.google.com/file/d/17_Cz5UqZ0GWb2cDiiD5Y3e7ilfF_PZJo/view?usp=drive_link" },
+      { title: "Schritte Plus Neu 5 : ", link: "https://drive.google.com/file/d/1TiaASY5L4UBYXB2wKO-pwM26a1dQPNOF/view?usp=drive_link" },
+      { title: "Vokabeln  : ", link: "https://drive.google.com/file/d/1g6rJH72xs-VCbvhmWRyZEo6HXOQ7SBLE/view?usp=drive_link" },
+    ],
+
+    "B1-5": [
+      { title: "Goethe-Zertifikat B1 Übungssatz Erwachsene : ", link: "https://drive.google.com/file/d/1bi6DLhfJG-6dNdjl-IeYbOgzdTxWxz0m/view?usp=drive_link" },
+      { title: "Goethe-Zertifikat B1 Übungssatz Jugendliche : ", link: "https://drive.google.com/file/d/1tE0wQ5bzOH1Qos-Fetvtm3YDphR1tZgj/view?usp=drive_link" },
+      { title: "Modellprüfung 1 Goethe- ÖSD-Zertifikat B1 : ", link: "https://drive.google.com/file/d/139gy7EO9jcUWygWOVUPjP4qMLyIU4QKZ/view?usp=drive_link" },
+      { title: "Modelltest Zertifikat B1 : ", link: "https://drive.google.com/file/d/1akhDbmL20BNbySa5rOtjXFuPU5WVPdp6/view?usp=drive_link" },
+      { title: "Module B1  : ", link: "https://drive.google.com/file/d/1S4PeBgZQ4MpLLTCnVeLGdlS6uXr2SqPL/view?usp=drive_link" },
+      { title: "Module B1 Lösungen und Transkriptionen : ", link: "https://drive.google.com/file/d/1iz_Rm5SWn-1WC2aPzNdTu4fWHG6uSzw5/view?usp=drive_link" },
+      { title: "Projekt B1 neu Lehrbuch : ", link: "https://drive.google.com/file/d/1mjLq_VE3Zo5PjY0Ej13B0yqYaADtvhCy/view?usp=drive_link" },
+      { title: "Projekt B1 neu Lehrerbuch (mit Lösungen) : ", link: "https://drive.google.com/file/d/1j8zqipGdcoPfrRWR_0dxnPCeM1ze57Te/view?usp=drive_link" },
+    ],
+
+    "B2-1": [
+      { title: "Hören : ", link: "https://www.youtube.com/watch?v=5LqWK90hrsE&list=PLmnN0FIJTFNy9vpLgbTxe2Xvnp4P6urwZ" },
+      { title: "Lesen : ", link: "https://www.youtube.com/watch?v=_SYP7v-5xwI&list=PLrGPg-x7YDHhcRY58EBOa3-Z8wAZ6T5kW" },
+      { title: "Schreiben : ", link: "https://drive.google.com/drive/folders/1aItxXig5AcwVH7bMdCzpQa55uPOTKREn?usp=drive_link" },
+      { title: "Sprechen : ", link: "https://drive.google.com/drive/folders/1Cjtuk5fiC6GgydM2JVjXO8ju3oIecyP7?usp=drive_link" },
+    ],
+
+    "B2-2":  [
+      { title: "Redemittel : ", link: "https://drive.google.com/drive/folders/1V_jmleLewEwHa_iFYWpNEEncwc23lcKL?usp=drive_link" },
+      { title: "Liên từ : ", link: "https://drive.google.com/file/d/1jGJ4y9OoZmi0-rJt3W9w1K9fOIiAqygy/view?usp=drive_link" },
+      { title: "Lộ Trình B2 : ", link: "https://drive.google.com/file/d/1sXY9zOyZFwbSaPKXTMY4M6ZyV_9NAqOG/view?usp=drive_link" },
+    
+    ],
+    "B2-3": [
+      { title: "Mit Erfolg zum Goethe Zertifikat B2 NEU 2019 Test Buch : ", link: "https://drive.google.com/file/d/1aOLbz6SinVL3BdhyVX88v876aoLRL2g9/view?usp=drive_link" },
+      { title: "Projekt B2 Neu : ", link: "https://drive.google.com/file/d/1k6mqC1poPYhv14j227hincw3qSQI8f8f/view?usp=drive_link" },
+      { title: "So geht's zu B2 - Übungsbuch : ", link: "https://drive.google.com/file/d/1o6tZzCX2_jL4FyLTqe2ijfHxy0HNdNMp/view?usp=drive_link" },
+      { title: "Werkstatt B2 Lehrbuch  : ", link: "https://drive.google.com/file/d/1HdP9ajpT8kVHU2Qn_l-C8nI_3iJM48qc/view?usp=drive_link" },
+      { title: "Werkstatt_B2 Lehr- und Arbeitsbuch. Lehrerausgabe : ", link: "https://drive.google.com/file/d/1g5vCsuZhnmuV3g6rgoDEhNnbprLm-lCp/view?usp=drive_link" },
+      { title: "Aspekte Neu B2 Arbeitsbuch  : ", link: "https://drive.google.com/file/d/11-iQggVv8RpeGTzs44N2LeD4Ln3m_Qrf/view?usp=drive_link" },
+      { title: "Aspekte Neu B2 Lehrbuch  : ", link: "https://drive.google.com/file/d/10Wdi3NTdUeQ-Y5uQcXBETe9bRnVWlrtl/view?usp=drive_link" },
+    ],
+    "B2-4":[
+      { title: "Arbeit und Beruf : ", link: "https://drive.google.com/file/d/1XZuh_IsqaLvhspd31gQT4tAJE2WycjAX/view?usp=drive_link" },
+      { title: "Bildung und Studium : ", link: "https://drive.google.com/file/d/1nsAhhLF-P0OmgWAqDRREau3b-ly-gk16/view?usp=drive_link" },
+      { title: "Natur und Tiere : ", link: "https://drive.google.com/file/d/1ICS3o45MT71PtddeUKoqkP7FmxHVsPSu/view?usp=drive_link" },
+      { title: "Wohnen und Lebenstil  : ", link: "https://drive.google.com/file/d/1Fbs7t90mEdRWqsdkFOEu_JVIFbGZeoEQ/view?usp=drive_link" },
+    ],
+
+    "C1-1": "Hiện tại mình chưa tới trình độ này mn đợi nha mình sẽ cập nhật thêm ",
+    "C1-2": "Hiện tại mình chưa tới trình độ này mn đợi nha mình sẽ cập nhật thêm ",
+    "C1-3": "Hiện tại mình chưa tới trình độ này mn đợi nha mình sẽ cập nhật thêm ",
+    "C1-4": "Hiện tại mình chưa tới trình độ này mn đợi nha mình sẽ cập nhật thêm ",
+    "C2-1": "Hiện tại mình chưa tới trình độ này mn đợi nha mình sẽ cập nhật thêm ",
+    "C2-2": "Hiện tại mình chưa tới trình độ này mn đợi nha mình sẽ cập nhật thêm ",
+    "C2-3": "Hiện tại mình chưa tới trình độ này mn đợi nha mình sẽ cập nhật thêm ",
+    "C2-4": "Hiện tại mình chưa tới trình độ này mn đợi nha mình sẽ cập nhật thêm ",
+
+   "I-1": [
+    { title: "Chemisch : ", link: "https://drive.google.com/drive/folders/1LESs-7boq9qXgogTHTp8Ul6WPSBzyqZL?usp=drive_link" },
+    { title: "Gesundheit : ", link: "https://drive.google.com/drive/folders/1vEfLm2MR5QASDSnUSlEc0Sr92RTkMCFH?usp=drive_link" },
+    { title: "Kultur : ", link: "https://drive.google.com/drive/folders/1l2f_N4SjtMgyppHTubzIfUbB59osxNfc?usp=drive_link" },
+    { title: "Math : ", link: "https://drive.google.com/drive/folders/1GBzFB33z55m3gTHiB2p75dfI7MeH1k1B?usp=drive_link" },
+    { title: "Physik : ", link: "https://drive.google.com/drive/folders/1sLi0vVi99bwQO6Tmuhx6Po8ITuXBUrTT?usp=drive_link" },
+    { title: "Sonstig : ", link: "https://drive.google.com/drive/folders/1BOitPK0kGHMwft5oq4NtYw3fx5tDGgQc?usp=drive_link" },
+    { title: "Sport : ", link: "https://drive.google.com/drive/folders/17QPJb8ViNMW4yVUS_4AyJWBf1HOqHiW4?usp=drive_link" },
+    { title: "Technik : ", link: "https://drive.google.com/drive/folders/1vRnqSg5pEocE_CINdTWGroIVcpzqWBy2?usp=drive_link" },
+    { title: "Wirtschaft : ", link: "https://drive.google.com/drive/folders/1aPMqQL7Nt29dJXuOYBXXppyz1RFpJfda?usp=drive_link" },
+    ],
+
+    "I-2" : [
+     { title: "Deutsch Niveu : ", link: "https://drive.google.com/file/d/12WFcBZPV5W8jh6ji8KzHmHl7V5srdZy_/view?usp=drive_link" },
+   ],
+   
+    "I-3" : [
+     { title: "Grammatik : ", link: "https://drive.google.com/file/d/1ZRXTybxjOImD8MaIS9ym8axbPq9UuZ2B/view?usp=drive_link" },
+   ],
+
+    "I-4" : [
+     { title: "Links : ", link: "https://drive.google.com/file/d/12ET2--jqkkaBcnJaxBsTbxiRaQT_AMj1/view?usp=drive_link" },
+   ],
+
+    "I-5" : [
+     { title: "Phân Biệt Động từ : ", link: "https://drive.google.com/file/d/1zIH8D4YEOEsf-VcKZnpYYOD3VoocRdso/view?usp=drive_link" },
+   ],
+   "I-6" : [
+     { title: "Menschen : ", link: "https://drive.google.com/drive/folders/10_kdzQABIaa4vabRaGNXwS8PwgmmxKEw?usp=drive_link" },
+     { title: "Schritte : ", link: "https://drive.google.com/drive/folders/1EjvSAEyw1Rq5Y2mqskI-njfXts5zWihj?usp=drive_link" },
+   ],
+  "I-7" : [
+     { title: "Verben : ", link: "https://drive.google.com/drive/folders/1tigbD5_1rOXQR6Y0-9KEpv4NtpOkCwqj?usp=drive_link" },
+     { title: "Fahren : ", link: "https://docs.google.com/spreadsheets/d/1hP4KRHEYivAonWY4p7DIqre3267KHuEM/edit?usp=drive_link&ouid=104474934978528548098&rtpof=true&sd=true" },
+     { title: "Fragen : ", link: "https://docs.google.com/spreadsheets/d/1uuaGx0mRW4NRDQyNA5MdlwGX8FuA_ma8/edit?usp=drive_link&ouid=104474934978528548098&rtpof=true&sd=true" },
+     { title: "Geben : ", link: "https://docs.google.com/spreadsheets/d/1Aq31bQTl7qF2qB-5je71Y6AZ0HDlTrFl/edit?usp=drive_link&ouid=104474934978528548098&rtpof=true&sd=true" },
+     { title: "Gehen : ", link: "https://docs.google.com/spreadsheets/d/1cpE8YT4sR2vrem25bks30gUqCvAyZbP0/edit?usp=drive_link&ouid=104474934978528548098&rtpof=true&sd=true" },
+     { title: "Kommen : ", link: "https://docs.google.com/spreadsheets/d/1HMcL_-r6Ri5fv2PbE4vuydK-HmtcPoIx/edit?usp=drive_link&ouid=104474934978528548098&rtpof=true&sd=true" },
+     { title: "Rufen : ", link: "https://docs.google.com/spreadsheets/d/1YzQQDUx98vNrpAvPuw7bN1SOh3qW2zvC/edit?usp=drive_link&ouid=104474934978528548098&rtpof=true&sd=true" },
+     { title: "Sagen : ", link: "https://docs.google.com/spreadsheets/d/1ZAOdOkrfDWc2C6J91g-z-j7zb4k9f1ru/edit?usp=drive_link&ouid=104474934978528548098&rtpof=true&sd=true" },
+   ],
+    };
+
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', () => {
+            const subpage = card.getAttribute('data-subpage');
+            const content = subpageContents[subpage];
+            const contentDiv = document.getElementById('subpage-content');
+            contentDiv.innerHTML = '';
+
+            if (content) {
+                content.forEach(item => {
+                    const link = document.createElement('a');
+                    link.href = item.link;
+                    link.target = '_blank';
+                    link.innerText = item.title;
+                    contentDiv.appendChild(link);
+                    contentDiv.appendChild(document.createElement('br'));
+                });
+            } else {
+                contentDiv.innerText = "Nội dung chưa có.";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
